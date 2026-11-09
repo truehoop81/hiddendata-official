@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="pageTitle">HiddenData - 개인정보처리방침 및 이용약관 / 환불 정책</title>
+  <meta name="description" content="HiddenData의 영지식(Zero-Knowledge) 보안 원칙, Google Drive API 제한적 사용 정책(Limited Use), Chrome 확장 프로그램 권한, 이용약관 및 14일 환불 정책 명세.">
+  <link rel="icon" type="image/png" href="icon-128.png">
+  <link rel="apple-touch-icon" href="icon-128.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="icon-128.png" alt="HiddenData Logo" class="brand-logo" width="38" height="38">
+        <span class="brand-text">HiddenData</span>
+        <span class="brand-badge">LEGAL</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link" data-i18n="navHome">← 홈으로 돌아가기</a></li>
+          <li><a href="#privacy" class="nav-link" data-i18n="navPrivacy">개인정보처리방침</a></li>
+          <li><a href="#terms" class="nav-link" data-i18n="navTerms">이용약관 및 환불 정책</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- 8 Language Switcher Dropdown -->
+        <div class="lang-switcher-wrapper">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh_TW">繁體中文</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="pt_BR">Português (BR)</option>
+          </select>
+          <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Legal Main Content Container -->
+  <main class="legal-page">
+    <div class="container">
+      <div class="legal-box">
+        <div class="legal-header">
+          <h1 class="legal-title" data-i18n="mainTitle">개인정보처리방침 및 이용약관</h1>
+          <p class="legal-meta" data-i18n="lastUpdated">최종 업데이트: 2026년 3월 1일 | 시행일자: 2026년 3월 1일</p>
+        </div>
+
+        <!-- ===================================================================
+             1. Privacy Policy Section
+             =================================================================== -->
+        <article id="privacy" class="legal-section">
+          <h2 class="section-title" style="font-size:1.8rem; margin-bottom:24px;" data-i18n="secPrivacyTitle">1. 개인정보처리방침 (Privacy Policy)</h2>
+
+          <!-- 1.1 Zero-Knowledge Architecture -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span data-i18n="zkTitle">1.1 영지식(Zero-Knowledge) 보안 아키텍처 원칙</span>
+            </h3>
+            <p class="legal-p" data-i18n="zkP1">
+              HiddenData(이하 '당사' 또는 '본 소프트웨어')는 사용자의 완전한 데이터 프라이버시를 보장하기 위해 설계된 독립형 영지식(Zero-Knowledge) 보안 미디어 금고 솔루션입니다.
+            </p>
+            <p class="legal-p" data-i18n="zkP2">
+              본 소프트웨어는 AES-256-GCM 군사 등급 대칭키 암호화 및 600,000회 반복 PBKDF2 키 스트레칭 알고리즘을 사용합니다. 사용자의 마스터 비밀번호, 암호화 키, 평문 파일 및 미디어 원본은 오직 사용자의 로컬 기기 RAM 메모리에서만 처리되며, 당사의 원격 서버로 일절 전송되거나 보관되지 않습니다. 개발자를 포함한 그 누구도 사용자의 비밀번호를 열람하거나 임의로 데이터를 복호화할 수 없습니다.
+            </p>
+          </section>
+
+          <!-- 1.2 Google Drive API & Limited Use -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+              <span data-i18n="gdriveTitle">1.2 Google Drive API 사용 및 사용자 데이터 정책 준수 (Limited Use)</span>
+            </h3>
+            <p class="legal-p" data-i18n="gdriveP1">
+              HiddenData는 클라우드 금고 백업 및 크로스 플랫폼(PC Chrome 확장 프로그램 ↔ Android 모바일 앱) 데이터 동기화를 위하여 Google Drive REST API를 사용합니다.
+            </p>
+            <p class="legal-p" data-i18n="gdriveP2">
+              당사는 Google API 서비스 사용자 데이터 정책(Google API Services User Data Policy) 및 제한적 사용 요구사항(Limited Use Requirements)을 엄격히 준수합니다:
+            </p>
+            <ul class="legal-list">
+              <li data-i18n="gdriveLi1">최소 권한 원칙(Least Privilege): 당사는 오직 'https://www.googleapis.com/auth/drive.file' 권한만을 요청합니다. 이 권한은 HiddenData를 통해 사용자가 직접 생성하거나 업로드한 암호화 파일(.enc), 마스터 설정 파일(.hiddendata_vault_config.json), 그리고 라이선스 동기화 파일(.hiddendata_pro_license.json)에만 한정적으로 접근할 수 있습니다.</li>
+              <li data-i18n="gdriveLi2">타 파일 접근 불가: 당사의 소프트웨어는 사용자의 Google Drive에 저장된 다른 개인 문서, 사진, 폴더 등 HiddenData와 무관한 파일에 대해 일절 접근할 수 없으며 조회 권한조차 보유하지 않습니다.</li>
+              <li data-i18n="gdriveLi3">제3자 비공개 및 AI 학습 금지: Google 사용자 데이터는 제3자 광고주, 데이터 브로커에게 절대 판매되거나 전송되지 않으며, 인공지능(AI) 또는 기계학습(ML) 모델의 학습 목적으로 사용되지 않습니다.</li>
+            </ul>
+          </section>
+
+          <!-- 1.3 Chrome Extension Permissions -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span data-i18n="permsTitle">1.3 Chrome 확장 프로그램 권한 명세</span>
+            </h3>
+            <p class="legal-p" data-i18n="permsIntro">PC 크롬 확장 프로그램은 보안 기능 동작을 위해 아래의 필수 권한만을 사용합니다:</p>
+            <ul class="legal-list">
+              <li data-i18n="permSidePanel">sidePanel: 브라우징 작업 중 화면 분할을 통해 편리하게 독립형 보안 금고를 열람할 수 있도록 사이드 패널 UI를 제공합니다.</li>
+              <li data-i18n="permStorage">storage: 로컬 환경설정(테마, 선택된 금고 경로) 및 마스터 비밀번호 오입력 차단을 위한 영지식 검증자(Zero-Knowledge Verifier) 해시를 브라우저 내부에 안전하게 저장합니다.</li>
+              <li data-i18n="permIdentity">identity: 사용자의 명시적 요청 시 Google Drive 클라우드 금고 연동 및 Pro 라이선스 동기화를 위한 안전한 OAuth2 로그인 토큰을 발급받습니다.</li>
+              <li data-i18n="permActiveTab">activeTab: 웹서핑 중 사용자가 직접 선택한 이미지나 파일을 암호화 금고로 드래그 앤 드롭하여 가져올 때 안전한 컨텍스트를 지원합니다.</li>
+            </ul>
+          </section>
+
+          <!-- 1.4 Data Retention & Deletion -->
+          <section>
+            <h3 class="legal-h2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+              <span data-i18n="dataRetentionTitle">1.4 데이터 보존 및 삭제 정책</span>
+            </h3>
+            <p class="legal-p" data-i18n="dataRetentionP">
+              당사는 원격 서버에 사용자의 개인정보나 파일 데이터를 일절 저장하지 않으므로, 데이터의 삭제는 전적으로 사용자의 제어 하에 있습니다. 사용자가 로컬 금고 폴더를 삭제하거나, Google Drive에서 HiddenData_Vault 폴더를 삭제하면 해당 데이터는 영구히 파기되며 당사에는 어떠한 잔여 데이터도 남지 않습니다.
+            </p>
+          </section>
+        </article>
+
+        <hr style="border:none; border-top:1px solid var(--border-subtle); margin:40px 0;">
+
+        <!-- ===================================================================
+             2. Terms of Service & Refund Policy Section
+             =================================================================== -->
+        <article id="terms" class="legal-section">
+          <h2 class="section-title" style="font-size:1.8rem; margin-bottom:24px;" data-i18n="secTermsTitle">2. 이용약관 및 환불 정책 (Terms of Service & Refund Policy)</h2>
+
+          <!-- 2.1 Terms Agreement -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <span data-i18n="termsAcceptTitle">2.1 서비스 이용 계약 체결</span>
+            </h3>
+            <p class="legal-p" data-i18n="termsAcceptP">
+              HiddenData 소프트웨어(PC 확장 프로그램 및 Android 모바일 앱)를 다운로드, 설치 또는 사용함으로써 귀하는 본 약관에 동의하게 됩니다. 본 약관에 동의하지 않으시는 경우 소프트웨어의 사용을 즉시 중단하셔야 합니다.
+            </p>
+          </section>
+
+          <!-- 2.2 Master Password Disclaimer (Lemon Squeezy Requirement) -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <span data-i18n="disclaimerTitle">2.2 마스터 비밀번호 분실에 대한 면책 고지 (Zero-Knowledge Warning)</span>
+            </h3>
+            <div class="callout-box warning">
+              <p style="font-weight:600; line-height:1.6;" data-i18n="disclaimerWarning">
+                ⚠️ 중요 고지: HiddenData는 완전한 Zero-Knowledge 암호화를 적용하므로, 사용자가 마스터 비밀번호를 분실할 경우 개발자를 포함한 그 누구도 이를 복원하거나 초기화할 수 있는 백도어가 기술적으로 존재하지 않습니다. 마스터 비밀번호의 안전한 보관 및 백업 책임은 전적으로 사용자 본인에게 있으며, 비밀번호 분실로 인한 데이터 접근 불가에 대해 개발자 및 서비스 제공자는 일체의 책임을 지지 않습니다.
+              </p>
+            </div>
+          </section>
+
+          <!-- 2.3 Pro Lifetime License Terms -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <span data-i18n="licenseTitle">2.3 Pro 라이선스 결제 및 제공 조건</span>
+            </h3>
+            <p class="legal-p" data-i18n="licenseP1">
+              HiddenData Pro 라이선스는 정기 결제가 발생하는 구독 모델이 아닌, 1회 결제로 영구히 소유하는 평생 라이선스(Lifetime License)입니다.
+            </p>
+            <p class="legal-p" data-i18n="licenseP2">
+              공식 결제 서비스(Lemon Squeezy)를 통해 1회 결제를 완료하면 암호학적 V2 HMAC-SHA256 계정 바인딩 라이선스가 발급됩니다. 본 라이선스는 PC Chrome 확장 프로그램과 Android 모바일 앱(얼리액세스 APK 및 향후 정식 출시판) 모두에서 Google 계정 동기화를 통해 추가 결제 없이 동시에 영구 활성화됩니다.
+            </p>
+          </section>
+
+          <!-- 2.4 Refund Policy (14 Days) -->
+          <section style="margin-bottom:28px;">
+            <h3 class="legal-h2">
+              <span data-i18n="refundTitle">2.4 14일 환불 정책 (Refund Policy - Lemon Squeezy 준수)</span>
+            </h3>
+            <p class="legal-p" data-i18n="refundP1">
+              당사는 Lemon Squeezy(공식 상거래 대행사, Merchant of Record)의 표준 소비자 보호 규정을 완벽하게 준수합니다.
+            </p>
+            <p class="legal-p" data-i18n="refundP2">
+              디지털 소프트웨어 라이선스의 특성상 결제 즉시 기능이 활성화되지만, 결제일로부터 14일 이내에 기술적 결함으로 인해 소프트웨어의 정상적인 구동이 불가능하거나 서비스에 만족하지 못하신 경우 전액 환불을 요청하실 수 있습니다.
+            </p>
+            <ul class="legal-list">
+              <li data-i18n="refundLi1">환불 요청 방법: 주문 번호(Order ID) 및 결제 시 입력하신 이메일 주소를 기재하여 공식 고객지원팀(truehoop81@gmail.com)으로 문의해 주시면 영업일 기준 24~48시간 이내에 확인 후 환불 처리를 도와드립니다.</li>
+              <li data-i18n="refundLi2">환불 제한 사항: 마스터 비밀번호 분실로 인한 본인 데이터 열람 불가 사유 등 소프트웨어 자체의 결함이 아닌 사용자의 관리 부주의로 인한 사유는 디지털 콘텐츠 특성상 환불이 제한될 수 있습니다.</li>
+            </ul>
+          </section>
+
+          <!-- 2.5 Contact & Support -->
+          <section>
+            <h3 class="legal-h2">
+              <span data-i18n="contactTitle">2.5 개발자 문의 및 고객지원</span>
+            </h3>
+            <p class="legal-p" data-i18n="contactP">
+              소프트웨어 사용 중 기술적 문제, 라이선스 활성화 오류, 또는 제안 사항이 있으신 경우 언제든지 아래의 공식 창구로 문의해 주시기 바랍니다.
+            </p>
+            <div class="callout-box">
+              <p style="font-weight:700;" data-i18n="contactEmail">공식 고객지원 이메일: truehoop81@gmail.com</p>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">
+          © 2026 HiddenData Team. All rights reserved.
+        </div>
+        <div style="display:flex; gap:20px;">
+          <a href="index.html" class="footer-link">HiddenData Home</a>
+          <a href="#privacy" class="footer-link" data-i18n="footerPrivacy">개인정보처리방침</a>
+          <a href="#terms" class="footer-link" data-i18n="footerTerms">이용약관 및 환불 정책</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { PRIVACY_I18N } from "./i18n-privacy.js";
+    import { initI18n } from "./i18n.js";
+    initI18n(PRIVACY_I18N);
+  </script>
+</body>
+</html>
