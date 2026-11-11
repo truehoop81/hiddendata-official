@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="pageTitle">HiddenData - 나만 열 수 있는 100% 비공개 AES-256-GCM 보안 금고 스튜디오</title>
+  <meta name="description" content="PC 크롬 확장 프로그램과 Android 모바일 앱을 아우르는 나만 열 수 있는 100% 비공개 암호화 미디어 금고. 임시 파일 없는 실시간 보안 뷰어 및 구글 드라이브 완전 비공개 동기화 지원.">
+  <link rel="icon" type="image/png" href="icon-128.png">
+  <link rel="apple-touch-icon" href="icon-128.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="icon-128.png" alt="HiddenData Logo" class="brand-logo" width="38" height="38">
+        <span class="brand-text">HiddenData</span>
+        <span class="brand-badge">STUDIO</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#features" class="nav-link" data-i18n="navFeatures">기능 소개</a></li>
+          <li><a href="#chrome-ext" class="nav-link">Chrome Extension</a></li>
+          <li><a href="#pricing" class="nav-link" data-i18n="navPricing">요금제</a></li>
+          <li><a href="#guide" class="nav-link" data-i18n="navGuide">Android 연동 가이드</a></li>
+          <li><a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a></li>
+          <li><a href="privacy.html" class="nav-link" data-i18n="navPrivacy">개인정보처리방침</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- 8 Language Switcher Dropdown -->
+        <div class="lang-switcher-wrapper">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh_TW">繁體中文</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="pt_BR">Português (BR)</option>
+          </select>
+          <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <div class="badge-studio">
+        <span class="pulsing-dot"></span>
+        <span data-i18n="heroBadge">100% PRIVATE SECURITY STUDIO</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span data-i18n="heroTitle1">PC 크롬 확장 프로그램 & Android 모바일</span><br>
+        <span class="gradient-text-purple" data-i18n="heroTitle2">나만 열 수 있는 100% 비공개 암호화 미디어 금고</span>
+      </h1>
+
+      <p class="hero-subtitle" data-i18n="heroSubtitle">
+        슈퍼컴퓨터도 뚫을 수 없는 마스터 비밀번호 보호(AES-256-GCM)로 사진, GIF, 동영상을 안전하게 지키세요. 기기에 어떠한 흔적(임시 파일)도 남기지 않는 실시간 보안 뷰어와 구글 본사도 열어볼 수 없는 100% 비공개 클라우드 백업을 지원합니다.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://github.com/truehoop81/hiddendata-official/releases/latest/download/HiddenData-early-access.apk" class="btn btn-primary" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span data-i18n="btnDownloadApk">📥 Android 얼리액세스 APK 다운로드 (v1.0.30)</span>
+        </a>
+
+        <a href="#chrome-ext" class="btn btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span data-i18n="btnChromeExt">💻 PC Chrome 확장 프로그램 안내</span>
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <span class="trust-item">
+          <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span data-i18n="trustZk">100% 완전 비공개 보안</span>
+        </span>
+        <span class="trust-item">
+          <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span data-i18n="trustZeroDisk">흔적 0B 실시간 재생</span>
+        </span>
+        <span class="trust-item">
+          <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span data-i18n="trustCloud">구글도 못 여는 100% 비공개 백업</span>
+        </span>
+        <span class="trust-item">
+          <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span data-i18n="trustLifetime">1회 결제 평생 소장</span>
+        </span>
+      </div>
+
+      <!-- Interactive Mockup Stage -->
+      <div class="hero-visual">
+        <div class="mockup-container">
+          <div class="mockup-header">
+            <div class="window-dots">
+              <span class="window-dot dot-red"></span>
+              <span class="window-dot dot-yellow"></span>
+              <span class="window-dot dot-green"></span>
+            </div>
+            <div class="mockup-title">HiddenData Studio Stage — AES-256-GCM [ACTIVE]</div>
+            <div style="font-size:0.75rem; color:var(--neon-green); font-weight:700;">● ZERO-TRACE RAM</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <div class="sidebar-title" data-i18n="mockExplorerTitle">로컬 암호화 금고 탐색기</div>
+              <div class="mockup-file-item active">
+                <span>🔒 personal_vault_photo.png.enc</span>
+                <span class="file-badge">V3 ENC</span>
+              </div>
+              <div class="mockup-file-item">
+                <span>🔒 funny_reaction_cat.gif.enc</span>
+                <span class="file-badge" style="background:rgba(255,215,0,0.15); color:var(--accent-gold);">GIF ENC</span>
+              </div>
+              <div class="mockup-file-item">
+                <span>🔒 sensitive_backup_archive.enc</span>
+                <span class="file-badge">비공개</span>
+              </div>
+            </div>
+            <div class="mockup-stage">
+              <div class="stage-badge-status">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span data-i18n="mockStageBadge">⚡ 흔적 없는 실시간 메모리 복호화 활성화</span>
+              </div>
+              <div class="stage-preview-box">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--neon-purple-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                  <polyline points="21 15 16 10 5 21"></polyline>
+                </svg>
+                <div style="font-weight:700; font-size:1.05rem; margin-bottom:6px;">personal_vault_photo.png</div>
+                <div class="stage-preview-meta">RAM Buffer: 7.6 KB | Decrypted in 0.08ms | Disk: 0B</div>
+              </div>
+              <p style="font-size:0.84rem; color:var(--text-secondary); margin-top:16px; max-width:440px;" data-i18n="mockStageText">
+                기기에 어떠한 임시 파일이나 흔적도 남기지 않고, 메모리에서 즉시 실시간으로 안전하게 재생합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid Section -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="featTag">핵심 보안 아키텍처</span>
+        <h2 class="section-title" data-i18n="featTitle">타협 없는 차세대 완전 비공개 미디어 보안</h2>
+        <p class="section-desc" data-i18n="featDesc">사용자의 비밀번호나 원본 미디어를 어떠한 서버에도 절대 전송하거나 보관하지 않습니다.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title" data-i18n="feat1Title">슈퍼컴퓨터도 뚫을 수 없는 마스터 비밀번호 보호</h3>
+          <p class="feature-desc" data-i18n="feat1Desc">개발자나 구글 본사는 물론 그 누구도 열어볼 수 없는 100% 비공개 보안 구조입니다. 해킹이 불가능한 단방향 비밀번호 보호로 나만의 소중한 미디어를 완벽히 지켜냅니다.</p>
+          <span class="feature-pill">100% PRIVATE</span>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </div>
+          <h3 class="feature-title" data-i18n="feat2Title">기기에 어떠한 흔적도 남기지 않는 실시간 보안 뷰어</h3>
+          <p class="feature-desc" data-i18n="feat2Desc">기기에 임시 파일이나 캐시를 단 1바이트도 남기지 않고, 사진, 움직이는 GIF, 고화질 영상을 실시간으로 안전하게 재생합니다.</p>
+          <span class="feature-pill">ZERO-DISK TRACE</span>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="feature-title" data-i18n="feat3Title">원터치 스텔스 모드 (즉시 화면 숨김)</h3>
+          <p class="feature-desc" data-i18n="feat3Desc">주변 시선이 느껴질 때 클릭 한 번으로 모든 썸네일과 민감한 파일명을 계산기나 일반 문서 파일로 완벽하게 위장합니다.</p>
+          <span class="feature-pill">PANIC PRIVACY</span>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title" data-i18n="feat4Title">구글 본사도 절대 열어볼 수 없는 100% 비공개 동기화</h3>
+          <p class="feature-desc" data-i18n="feat4Desc">PC에서 보관한 미디어 금고를 Android 스마트폰에서 그대로 즉시 열람하고, 마스터 설정 및 Pro 라이선스를 양방향 무음 동기화합니다.</p>
+          <span class="feature-pill">CROSS-PLATFORM SYNC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chrome Extension Section -->
+  <section id="chrome-ext" class="section" style="background:#0B0B14; border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="chromeExtTag">PC 크롬 브라우저를 완벽한 보안 스튜디오로</span>
+        <h2 class="section-title" data-i18n="chromeExtTitle">사이드 패널 & 전체화면 스튜디오 뷰</h2>
+        <p class="section-desc" data-i18n="chromeExtDesc">브라우징 중 우측 사이드 패널에서 원클릭으로 금고를 열거나, 전용 탭에서 전체화면 시네마틱 미디어 뷰어로 쾌적하게 감상하세요. 드래그 앤 드롭 초고속 실시간 암복호화를 지원합니다.</p>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+        <div class="feature-card" style="flex:1; min-width:260px; max-width:540px;">
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:10px;">⚡ 사이드 패널 즉시 열람</h3>
+          <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
+            웹 서핑을 중단하지 않고 브라우저 사이드 패널에서 암호화된 이미지나 동영상을 즉시 드래그 앤 드롭으로 보관하고 직독합니다.
+          </p>
+        </div>
+        <div class="feature-card" style="flex:1; min-width:260px; max-width:540px;">
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:10px;">🎬 시네마틱 HD 미디어 뷰어</h3>
+          <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
+            전체화면 모드(?view=tab)에서 애니메이션 GIF, 고화질 사진 및 영상을 좌우 키보드 탐색과 함께 압도적인 화질로 감상할 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section (Lemon Squeezy Store Review Aligned) -->
+  <section id="pricing" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="pricingTag">투명한 요금제</span>
+        <h2 class="section-title" data-i18n="pricingTitle">평생 소장 라이선스, 구독료 없음</h2>
+        <p class="section-desc" data-i18n="pricingDesc">매월 반복되는 구독료 없이 단 한 번의 결제로 PC와 스마트폰 모두에서 완벽한 비공개 보안 금고를 평생 소장하세요.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <h3 class="pricing-tier" data-i18n="planFreeName">Free (무료 플랜)</h3>
+            <p class="pricing-desc" data-i18n="planFreeDesc">단일 로컬 금고를 위한 기본 보안 패키지</p>
+          </div>
+
+          <div class="pricing-price-wrap">
+            <span class="pricing-price" data-i18n="planFreePrice">₩0 / $0</span>
+            <span class="pricing-period" data-i18n="planFreePeriod">평생 무료</span>
+          </div>
+
+          <ul class="pricing-features">
+            <li class="pricing-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planFreeF1">첫 번째 로컬 금고 100% 평생 무료</span>
+            </li>
+            <li class="pricing-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planFreeF2">무제한 파일 암호화 및 복호화</span>
+            </li>
+            <li class="pricing-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planFreeF3">기기에 흔적을 남기지 않는 실시간 보안 뷰어 (사진, GIF, 동영상)</span>
+            </li>
+            <li class="pricing-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planFreeF4">원터치 스텔스 모드 (즉시 화면 숨김)</span>
+            </li>
+            <li class="pricing-feature-item">
+              <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planFreeF5">독립형 로컬 저장소 보안 보호</span>
+            </li>
+          </ul>
+
+          <a href="https://github.com/truehoop81/hiddendata-official/releases/latest/download/HiddenData-early-access.apk" class="btn btn-secondary" style="width:100%;" data-i18n="planFreeBtn">무료로 시작하기</a>
+        </div>
+
+        <!-- Pro Lifetime Plan -->
+        <div class="pricing-card popular">
+          <div class="popular-badge" data-i18n="planProBadge">추천 · 평생 소장</div>
+          <div class="pricing-header">
+            <h3 class="pricing-tier" data-i18n="planProName">Pro 평생 소장 라이선스</h3>
+            <p class="pricing-desc" data-i18n="planProDesc">다중 금고, 하위 폴더, Google Drive 연동 스튜디오</p>
+          </div>
+
+          <div class="pricing-price-wrap">
+            <span class="pricing-price gradient-text-gold" data-i18n="planProPrice">₩12,000 / $8.99</span>
+            <span class="pricing-period" data-i18n="planProPeriod">1회 결제 · 구독료 없음</span>
+          </div>
+
+          <ul class="pricing-features">
+            <li class="pricing-feature-item highlight">
+              <svg class="check-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planProF1">무제한 다중 금고 (외장 SSD, USB, 업무용 2개 이상 무제한 마운트)</span>
+            </li>
+            <li class="pricing-feature-item highlight">
+              <svg class="check-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planProF2">금고 내 하위 폴더 정리 및 빠른 경로 이동</span>
+            </li>
+            <li class="pricing-feature-item highlight">
+              <svg class="check-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planProF3">구글 본사도 절대 열어볼 수 없는 100% 비공개 동기화 및 클라우드 백업</span>
+            </li>
+            <li class="pricing-feature-item highlight">
+              <svg class="check-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planProF4">1회 결제로 PC 크롬 확장 프로그램 + Android 모바일 동시 Pro 영구 활성화</span>
+            </li>
+            <li class="pricing-feature-item">
+              <svg class="check-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planProF5">내 구글 계정으로 PC와 폰 모두에서 평생 소장하는 정품 라이선스</span>
+            </li>
+            <li class="pricing-feature-item">
+              <svg class="check-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="planProF6">우선 고객 지원 및 향후 모든 업데이트 평생 무료</span>
+            </li>
+          </ul>
+
+          <a href="https://hiddendata.lemonsqueezy.com/checkout/buy/09bdeb77-678d-43a2-b74b-5ac96798d7c1" class="btn btn-gold" style="width:100%;" target="_blank" rel="noopener noreferrer" data-i18n="planProBtn">
+            Pro 라이선스 구매하기 (₩12,000 / $8.99)
+          </a>
+          <p class="pricing-guarantee" data-i18n="planProGuarantee">Lemon Squeezy 안전 결제 · 14일 환불 보장</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cross-Platform Sync & Android Early Access Guide Section -->
+  <section id="guide" class="section" style="background:#0B0B14; border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="guideTag">크로스 플랫폼 가이드</span>
+        <h2 class="section-title" data-i18n="guideTitle">Android 모바일 앱 & Pro 연동 3단계</h2>
+        <p class="section-desc" data-i18n="guideDesc">PC에서 결제하셨든 모바일에서 사용하시든, 추가 비용 없이 양쪽 기기에서 모두 Pro를 즐기실 수 있습니다.</p>
+      </div>
+
+      <div class="guide-steps-grid">
+        <!-- Step 1 -->
+        <div class="guide-step-card">
+          <div class="step-num-badge" data-i18n="step1Num">1</div>
+          <h3 class="step-title" data-i18n="step1Title">Android 얼리액세스 APK 설치</h3>
+          <p class="step-desc" data-i18n="step1Desc">공식 릴리스 페이지에서 최신 HiddenData-early-access.apk를 다운로드하여 Android 기기에 설치합니다.</p>
+          <div class="step-link-box">
+            <a href="https://github.com/truehoop81/hiddendata-official/releases/latest/download/HiddenData-early-access.apk" class="btn btn-primary btn-sm" download data-i18n="step1Link">
+              APK 직접 다운로드 (v1.0.30)
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="guide-step-card">
+          <div class="step-num-badge" data-i18n="step2Num">2</div>
+          <h3 class="step-title" data-i18n="step2Title">PC 확장 프로그램에서 Pro 구매 & Drive 연동</h3>
+          <p class="step-desc" data-i18n="step2Desc">PC 크롬 확장 프로그램에서 Pro 라이선스를 구매하고 본인의 Google Drive 계정을 연결합니다.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="guide-step-card">
+          <div class="step-num-badge" data-i18n="step3Num">3</div>
+          <h3 class="step-title" data-i18n="step3Title">모바일 앱에서 원터치 Pro 즉시 활성화</h3>
+          <p class="step-desc" data-i18n="step3Desc">Android 앱에서 동일한 Google 계정으로 로그인하면 추가 결제 없이 즉시 Pro 라이선스가 영구 활성화됩니다!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" data-i18n="faqTag">자주 묻는 질문</span>
+        <h2 class="section-title" data-i18n="faqTitle">궁금하신 점을 확인하세요</h2>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-card">
+          <div class="faq-q">
+            <span class="faq-q-icon">Q.</span>
+            <span data-i18n="faqQ1">마스터 비밀번호를 잊어버리면 어떻게 되나요?</span>
+          </div>
+          <p class="faq-a" data-i18n="faqA1">HiddenData는 비밀번호나 복호화 키가 외부 서버로 절대 전송되지 않는 100% 완전 비공개(Zero-Knowledge) 구조입니다. 개발자를 포함한 그 누구도 비밀번호를 복구해 드릴 수 없으므로, 마스터 비밀번호를 안전한 곳에 꼭 기록해 두세요.</p>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">
+            <span class="faq-q-icon">Q.</span>
+            <span data-i18n="faqQ2">구독형 요금제인가요?</span>
+          </div>
+          <p class="faq-a" data-i18n="faqA2">아닙니다. HiddenData Pro는 매월 결제되는 구독료가 없는 1회 결제 평생 소장(Lifetime) 라이선스입니다.</p>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">
+            <span class="faq-q-icon">Q.</span>
+            <span data-i18n="faqQ3">PC에서 구매한 라이선스를 스마트폰에서도 쓸 수 있나요?</span>
+          </div>
+          <p class="faq-a" data-i18n="faqA3">네! Google Drive 계정 연동을 통해 PC 크롬 확장 프로그램과 Android 모바일 앱(얼리액세스 및 정식 출시판) 양쪽 모두에서 추가 결제 없이 영구적으로 Pro가 활성화됩니다.</p>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-q">
+            <span class="faq-q-icon">Q.</span>
+            <span data-i18n="faqQ4">Google Drive의 다른 개인 파일도 읽거나 수정하나요?</span>
+          </div>
+          <p class="faq-a" data-i18n="faqA4">절대 아닙니다. HiddenData는 오직 사용자가 앱과 확장 프로그램을 통해 직접 생성한 암호화 파일(.enc)과 설정/라이선스 파일만 접근하는 제한적 drive.file 권한만 사용합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="icon-128.png" alt="HiddenData Logo" width="32" height="32" style="border-radius:8px;">
+            <span style="font-weight:800; font-size:1.15rem; color:#FFFFFF;">HiddenData</span>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footerDesc">
+            나만 열 수 있는 AES-256-GCM 보안 스튜디오. PC와 모바일을 넘나드는 가장 안전한 개인 미디어 금고 솔루션.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColProduct">제품</h4>
+          <ul class="footer-links">
+            <li><a href="#features" class="footer-link" data-i18n="navFeatures">기능 소개</a></li>
+            <li><a href="#pricing" class="footer-link" data-i18n="navPricing">요금제</a></li>
+            <li><a href="https://github.com/truehoop81/hiddendata-official/releases/latest/download/HiddenData-early-access.apk" class="footer-link" download>Android APK (v1.0.30)</a></li>
+            <li><a href="#chrome-ext" class="footer-link">Chrome Extension</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColLegal">법적 고지</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html" class="footer-link" data-i18n="footerPrivacy">개인정보처리방침</a></li>
+            <li><a href="privacy.html#terms" class="footer-link" data-i18n="footerTerms">이용약관 및 환불 정책</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColSupport">고객지원</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:truehoop81@gmail.com" class="footer-link" data-i18n="footerEmail">개발자 문의 (truehoop81@gmail.com)</a></li>
+            <li><a href="https://github.com/truehoop81/hiddendata-official" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">
+          © 2026 HiddenData Team. All rights reserved.
+        </div>
+        <div class="footer-merchant-note" data-i18n="footerMerchant">
+          결제 대행 및 상거래 기록: Lemon Squeezy (Merchant of Record)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { INDEX_I18N } from "./i18n-index.js";
+    import { initI18n } from "./i18n.js";
+    initI18n(INDEX_I18N);
+  </script>
+</body>
+</html>
