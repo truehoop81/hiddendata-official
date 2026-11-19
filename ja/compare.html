@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="comparePageTitle">HiddenData vs Cryptomator vs クラウド金庫 | 暗号化ツール比較ガイド</title>
+  <meta name="description" content="技術比較：HiddenData vs Cryptomatorおよびクラウド保管庫。RAMストリーミング、AES-256-GCM AEAD、Googleドライブ権限スコープ、価格の比較。">
+  <link rel="canonical" href="https://truehoop81.github.io/ja/compare.html">
+  <link rel="alternate" hreflang="x-default" href="https://truehoop81.github.io/compare.html">
+  <link rel="alternate" hreflang="en" href="https://truehoop81.github.io/compare.html">
+  <link rel="alternate" hreflang="ko" href="https://truehoop81.github.io/ko/compare.html">
+  <link rel="alternate" hreflang="ja" href="https://truehoop81.github.io/ja/compare.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://truehoop81.github.io/zh-TW/compare.html">
+  <link rel="alternate" hreflang="es" href="https://truehoop81.github.io/es/compare.html">
+  <link rel="alternate" hreflang="de" href="https://truehoop81.github.io/de/compare.html">
+  <link rel="alternate" hreflang="fr" href="https://truehoop81.github.io/fr/compare.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://truehoop81.github.io/pt-BR/compare.html">
+  <link rel="icon" type="image/png" href="../icon-128.png">
+  <link rel="apple-touch-icon" href="../icon-128.png">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HiddenData">
+  <meta property="og:title" content="HiddenData vs Cryptomator vs クラウド金庫 | 暗号化ツール比較ガイド">
+  <meta property="og:description" content="技術比較：HiddenData vs Cryptomatorおよびクラウド保管庫。RAMストリーミング、AES-256-GCM AEAD、Googleドライブ権限スコープ、価格の比較。">
+  <meta property="og:url" content="https://truehoop81.github.io/ja/compare.html">
+  <meta property="og:image" content="https://truehoop81.github.io/og-image-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HiddenData vs Alternatives Vault Comparison Guide">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HiddenData vs Cryptomator vs クラウド金庫 | 暗号化ツール比較ガイド">
+  <meta name="twitter:description" content="技術比較：HiddenData vs Cryptomatorおよびクラウド保管庫。RAMストリーミング、AES-256-GCM AEAD、Googleドライブ権限スコープ、価格の比較。">
+  <meta name="twitter:image" content="https://truehoop81.github.io/og-image-1200x630.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../pages.css">
+
+  <!-- JSON-LD Structured Data: WebPage + FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://truehoop81.github.io/compare.html",
+        "name": "HiddenData vs Alternatives Comparison Matrix",
+        "description": "Evidence-based architectural and feature comparison between HiddenData, Cryptomator, Cloud Locker Apps, and Local File Hiders.",
+        "url": "https://truehoop81.github.io/compare.html",
+        "inLanguage": ["en", "ko", "ja", "zh-TW", "es", "de", "fr", "pt-BR"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does HiddenData differ from Cryptomator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cryptomator is designed as a general-purpose virtual drive encryption tool that mounts a virtual filesystem (WebDAV/FUSE). HiddenData is purpose-built as an in-memory streaming media studio, running natively inside the Chrome Side Panel and Android app. HiddenData writes zero bytes of temporary files to disk, plays 4K/GIF instantly without mounting virtual drives, and uses the least-privilege Google Drive drive.file scope."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is HiddenData superior to traditional Cloud Vaults like Dropbox Vault or OneDrive Vault?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Traditional cloud lockers store encryption keys on company servers or manage them through cloud identity, meaning cloud administrators, AI training scrapers, and legal subpoenas can decrypt and inspect files. HiddenData enforces client-side Zero-Knowledge: files are encrypted locally with AES-256-GCM before uploading, and Google Drive only ever receives unreadable ciphertext."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the security difference between HiddenData and free mobile 'File Hider' apps?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most free mobile file hiders do not perform genuine cryptographic encryption; they simply prepend a dot (.) to filenames, move files into hidden subfolders, or place a PIN lock on an unencrypted SQLite database. Forensic software (or connecting the phone via USB MTP/ADB) immediately exposes all plaintext files. HiddenData enforces true 256-bit AES-GCM envelope encryption with 100,000 PBKDF2 iterations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why choose HiddenData's Lifetime Pro license over monthly subscriptions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many commercial vaults charge $5 to $15 every month. HiddenData offers a permanent Pro Lifetime License for a one-time purchase of $8.99 with no recurring fees, syncing automatically across both PC Chrome Extension and Android mobile via your private Google Drive vault."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="../icon-128.png" alt="HiddenData Logo" class="brand-logo" width="38" height="38">
+        <span class="brand-text">HiddenData</span>
+      </a>
+
+      <!-- Desktop Navigation (>= 992px) -->
+      <nav class="desktop-nav" aria-label="Desktop Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html#features" class="nav-link" data-i18n="navFeatures">機能紹介</a></li>
+          <li><a href="security-architecture.html" class="nav-link" data-i18n="navSecurity">セキュリティ白書</a></li>
+          <li><a href="compare.html" class="nav-link active" data-i18n="navCompare">製品比較</a></li>
+          <li><a href="use-cases.html" class="nav-link" data-i18n="navUseCases">活用事例 & FAQ</a></li>
+          <li><a href="early-access.html" class="nav-link nav-link-highlight" data-i18n="navEarlyAccess">アーリーアクセス</a></li>
+          <li><a href="privacy.html" class="nav-link" data-i18n="navPrivacy">プライバシーポリシー</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions (Language, Hamburger Toggle) -->
+      <div class="header-actions">
+        <!-- 8 Language Switcher Dropdown -->
+        <div class="lang-switcher-wrapper">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="ja" selected>日本語</option>
+            <option value="zh_TW">繁體中文</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="pt_BR">Português (BR)</option>
+          </select>
+          <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+
+        <!-- Mobile Hamburger Toggle Button (< 992px) -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Overlay (< 992px) -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-brand">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="28" height="28" class="brand-logo">
+            <span class="brand-text">HiddenData</span>
+          </div>
+          <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html#features" class="mobile-nav-link" data-i18n="navFeatures">機能紹介</a></li>
+          <li><a href="security-architecture.html" class="mobile-nav-link" data-i18n="navSecurity">セキュリティ白書</a></li>
+          <li><a href="compare.html" class="mobile-nav-link active" data-i18n="navCompare">製品比較</a></li>
+          <li><a href="use-cases.html" class="mobile-nav-link" data-i18n="navUseCases">活用事例 & FAQ</a></li>
+          <li><a href="early-access.html" class="mobile-nav-link mobile-nav-link-highlight" data-i18n="navEarlyAccess">アーリーアクセス</a></li>
+          <li><a href="index.html#pricing" class="mobile-nav-link" data-i18n="navPricing">料金プラン</a></li>
+          <li><a href="index.html#guide" class="mobile-nav-link" data-i18n="navGuide">Android連携ガイド</a></li>
+          <li><a href="index.html#faq" class="mobile-nav-link" data-i18n="navFaq">FAQ</a></li>
+          <li><a href="privacy.html" class="mobile-nav-link" data-i18n="navPrivacy">プライバシーポリシー</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj" class="btn btn-primary mobile-btn-install" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="21.17" y1="8" x2="12" y2="8"></line>
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+            </svg>
+            <span data-i18n="btnChromeStore">Chromeに追加</span>
+          </a>
+          <a href="early-access.html" class="btn btn-secondary mobile-btn-early">
+            <span data-i18n="navEarlyAccess">アーリーアクセス</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sticky Subpage Navigation -->
+  <div class="subpage-nav-bar">
+    <div class="container subpage-nav-inner">
+      <ul class="toc-pills">
+        <li><a href="#overview" class="toc-pill-link" data-i18n="tocCompOverview">1. ソリューション概要</a></li>
+        <li><a href="#matrix" class="toc-pill-link" data-i18n="tocCompMatrix">2. 機能比較表</a></li>
+        <li><a href="#cryptomator" class="toc-pill-link" data-i18n="tocCompCryptomator">3. vs Cryptomator</a></li>
+        <li><a href="#cloud-lockers" class="toc-pill-link" data-i18n="tocCompCloud">4. vs クラウド金庫</a></li>
+        <li><a href="#local-hiders" class="toc-pill-link" data-i18n="tocCompHiders">5. vs ローカル隠蔽アプリ</a></li>
+        <li><a href="#verdict" class="toc-pill-link" data-i18n="tocCompVerdict">6. 選択ガイド</a></li>
+        <li><a href="#faq" class="toc-pill-link" data-i18n="tocCompFaq">7. 比較FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="page-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        <span data-i18n="compareBadge">客観的技術アーキテクチャ & 性能比較</span>
+      </div>
+
+      <h1 class="page-hero-title">
+        <span data-i18n="compareHeroTitle1">HiddenData vs 主要セキュリティ製品</span><br>
+        <span class="gradient-text-purple" data-i18n="compareHeroTitle2">アーキテクチャ & 機能詳細比較</span>
+      </h1>
+
+      <p class="page-hero-subtitle" data-i18n="compareHeroSub">暗号技術、ゼロディスクフォレンジック、メディア再生、クラウド権限の観点から、HiddenData、Cryptomator、クラウド付属金庫、ローカル隠蔽アプリを客관的に比較します。</p>
+
+      <div class="page-meta-bar">
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span data-i18n="compareMetaAudited">比較基準更新: 2026年3月</span>
+        </span>
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span data-i18n="compareMetaObjective">データに基づく客観的技術評価</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container whitepaper-article">
+
+    <!-- Section 1: Overview Cards of the 4 Compared Solutions -->
+    <section id="overview" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">01.</span>
+        <h2 class="wp-section-title" data-i18n="compSec1Title">比較対象4つのソリューション概要</h2>
+      </div>
+
+      <div class="verdict-grid">
+        <!-- HiddenData -->
+        <div class="verdict-card" style="border-color:var(--border-purple); background:rgba(124, 77, 255, 0.05);">
+          <span class="verdict-badge badge-purple">OUR SOLUTION</span>
+          <h3 class="verdict-title">HiddenData Studio</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardHdDesc">メディア専用の100%完全非公開スタジオ。一時ファイル0BでChromeサイドパネルとAndroidから4K/GIFをRAMストリーミング再生。</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardHdPro1">0B ディスク残余一時ファイル</li>
+            <li data-i18n="compCardHdPro2">ブラウザネイティブ4K/GIF再生</li>
+            <li data-i18n="compCardHdPro3">最小権限 drive.file スコープ</li>
+            <li data-i18n="compCardHdPro4">$8.99 買い切り永久ライセンス</li>
+          </ul>
+        </div>
+
+        <!-- Cryptomator -->
+        <div class="verdict-card">
+          <span class="verdict-badge badge-neutral">OPEN SOURCE</span>
+          <h3 class="verdict-title">Cryptomator</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardCryptoDesc">一般文書向けクラウド暗号化の定番オープンソース。仮想ドライブ（FUSE/WebDAV）をOSにマウントして使用。</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardCryptoPro1">オープンソース AES-256 実装</li>
+            <li data-i18n="compCardCryptoPro2">多様なクラウドストレージに対応</li>
+            <li class="verdict-cons-list" data-i18n="compCardCryptoCon1">仮想ドライブのマウントが必要</li>
+            <li class="verdict-cons-list" data-i18n="compCardCryptoCon2">ブラウザ内サイドパネル再生に非対応</li>
+          </ul>
+        </div>
+
+        <!-- Standard Cloud Vaults -->
+        <div class="verdict-card">
+          <span class="verdict-badge badge-gold">PROPRIETARY CLOUD</span>
+          <h3 class="verdict-title">Cloud Vaults (Dropbox/OneDrive)</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardCloudDesc">Dropbox Vault、OneDrive Personal Vault等。クラウド事業者が提供するPIN保護フォルダ。</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardCloudPro1">既存のクラウド機能との連携が容易</li>
+            <li class="verdict-cons-list" data-i18n="compCardCloudCon1">事業者が鍵を管理（非公開ではない）</li>
+            <li class="verdict-cons-list" data-i18n="compCardCloudCon2">月額のクラウド利用料が必須</li>
+          </ul>
+        </div>
+
+        <!-- Local File Hiders -->
+        <div class="verdict-card">
+          <span class="verdict-badge badge-red">MOBILE APP LOCKERS</span>
+          <h3 class="verdict-title">Local File Hiders & Lockers</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardHidersDesc">アプリストアの電卓型写真隠しアプリ等。多くは拡張子の変更や隠しフォルダ移動のみ。</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardHidersPro1">スマホで手軽に使える</li>
+            <li class="verdict-cons-list" data-i18n="compCardHidersCon1">PCにUSB接続すると平文が即座に流出</li>
+            <li class="verdict-cons-list" data-i18n="compCardHidersCon2">PCブラウザとの連携機能なし</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Comprehensive Feature Matrix -->
+    <section id="matrix" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">02.</span>
+        <h2 class="wp-section-title" data-i18n="compSec2Title">総合技術機能比較表 (Feature Matrix)</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec2P1">暗号化強度、ディスク痕跡、メディア再生、クラウド分離、料金体系にわたる詳細な機能比較です。</p>
+
+      <div class="table-container">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;" data-i18n="thCompFeature">比較項目および機能</th>
+              <th class="th-highlight-hd" style="width: 25%;">HiddenData Studio</th>
+              <th style="width: 18%;">Cryptomator</th>
+              <th style="width: 16%;">Cloud Locker Apps</th>
+              <th style="width: 16%;">Local File Hiders</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Category: Cryptography & Architecture -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catCryptoArch">1. 暗号技術およびコア設計</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompAlgo">暗号化アルゴリズム</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-purple">AES-256-GCM AEAD</span></td>
+              <td>AES-256-CTR + HMAC</td>
+              <td>AES-256-CBC (Server managed)</td>
+              <td><span class="badge-tag badge-red">None / File Rename</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompZk">完全非公開 (Zero-Knowledge)</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ 100% Zero-Knowledge</span></td>
+              <td><span class="cell-icon-check">✓ 100% Zero-Knowledge</span></td>
+              <td><span class="cell-icon-cross">✗ Provider Holds Keys</span></td>
+              <td><span class="cell-icon-cross">✗ Fake Protection</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompKdf">鍵導出関数 (KDF)</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-purple">PBKDF2-SHA256 (100k)</span></td>
+              <td>Scrypt</td>
+              <td>Cloud Identity / OAuth</td>
+              <td>Plain PIN / MD5</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompRekey">再暗号化なしのパスワード変更</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Yes (0.001s KeySlot)</span></td>
+              <td><span class="cell-icon-cross">✗ Requires Full Re-encrypt</span></td>
+              <td><span class="cell-icon-partial">▲ Cloud Password Reset</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+            </tr>
+
+            <!-- Category: Disk Forensics & Residue -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catForensics">2. ディスクフォレンジックと痕跡</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompDiskResidue">復号時の一時ファイル作成</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-green">0 Bytes (Zero-Disk)</span></td>
+              <td>OS Virtual FS Cache</td>
+              <td>Browser / Desktop Temp</td>
+              <td><span class="badge-tag badge-red">Plaintext in App Data</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompRamStream">ストリーミング再生方式</strong></td>
+              <td class="td-highlight-hd">Direct RAM TypedArray</td>
+              <td>FUSE / WebDAV Mount</td>
+              <td>Full File Download</td>
+              <td>Direct File Read</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompZeroize">終了時のメモリゼロ消去</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Explicit Zeroize</span></td>
+              <td><span class="cell-icon-partial">▲ OS Dependent</span></td>
+              <td><span class="cell-icon-cross">✗ OS Swap / Pagefile</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompForensicImmune">フォレンジックツール復元への耐性</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ 100% Immune</span></td>
+              <td><span class="cell-icon-partial">▲ Moderate (Mount leak)</span></td>
+              <td><span class="cell-icon-cross">✗ High Residual Risk</span></td>
+              <td><span class="cell-icon-cross">✗ 0% (Trivially Dumped)</span></td>
+            </tr>
+
+            <!-- Category: Media Experience & Playback -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catMediaExp">3. メディア再生および閲覧体験</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompBrowserPlay">ブラウザ内4K/GIF即時再生</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Chrome Side Panel</span></td>
+              <td><span class="cell-icon-cross">✗ External Media Player</span></td>
+              <td><span class="cell-icon-partial">▲ Cloud Web Player</span></td>
+              <td><span class="cell-icon-cross">✗ Mobile App Only</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompThumbSpeed">サムネイル高速読み込み速度</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-cyan">0.005s (V3 Header)</span></td>
+              <td>Scans Full File Payload</td>
+              <td>Cloud-Generated Thumb</td>
+              <td>Unencrypted Local Thumb</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompStealth">ワンタッチ覗き見防止ステルス</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Instant Panic Shield</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+              <td><span class="cell-icon-partial">▲ Fake Calculator Screen</span></td>
+            </tr>
+
+            <!-- Category: Cloud Isolation & Permissions -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catCloudScope">4. クラウドプライバシーと権限範囲</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompGdriveScope">Google Drive アクセス権限</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-green">drive.file (Isolated)</span></td>
+              <td>Local Folder Sync</td>
+              <td><span class="badge-tag badge-red">Full Account Scope</span></td>
+              <td>N/A (No Cloud Sync)</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompCloudVisibility">クラウド事業者による閲覧可否</strong></td>
+              <td class="td-highlight-hd">100% Random Ciphertext</td>
+              <td>100% Random Ciphertext</td>
+              <td><span class="badge-tag badge-red">Provider Scans Content</span></td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompCrossPlatform">Android ↔ PC バイナリ互換性</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Shared V3 Container</span></td>
+              <td><span class="cell-icon-check">✓ Shared Format</span></td>
+              <td><span class="cell-icon-partial">▲ Proprietary Web/App</span></td>
+              <td><span class="cell-icon-cross">✗ Android Only</span></td>
+            </tr>
+
+            <!-- Category: Licensing & Pricing -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catPricingModel">5. 料金体系および所有権</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompPricing">ライセンス料金形態</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-gold">$8.99 Lifetime (1-Time)</span></td>
+              <td>Free PC / $14.99 Mobile</td>
+              <td>$9.99 ~ $15.00 / month</td>
+              <td>Ad-Heavy / $3.99/mo</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompAccount">アカウント登録・個人情報の義務</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-green">None (Anonymous)</span></td>
+              <td><span class="badge-tag badge-green">None</span></td>
+              <td>Mandatory Corporate ID</td>
+              <td>Varies (Ad trackers)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: Deep Dive Competitor Analysis -->
+    <section id="cryptomator" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">03.</span>
+        <h2 class="wp-section-title" data-i18n="compSec3Title">徹底比較: HiddenData vs Cryptomator</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec3P1">Cryptomatorは透明性の高い暗号化と優れたマルチクラウド対応で知られる優秀なオープンソース製品です。しかし、HiddenDataとは想定されるユースケースが根本的に異なります：</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="compSec3Li1">仮想ドライブ vs ブラウザサイドパネル：CryptomatorはFUSE/WebDAV仮想ドライブをOSにマウントします。文書管理には最適ですが、メディアを開くたびにOS標準プレイヤーが起動し、キャッシュや履歴が残ります。</li>
+        <li data-i18n="compSec3Li2">ゼロディスクRAMストリーミング：HiddenDataはChromeサイドパネル内で動作し、Web CryptoとTypedArrayにより64KB単位でメモリ上のみで復号するため、ディスク痕跡が0Bです。</li>
+        <li data-i18n="compSec3Li3">大容量動画ギャラリーの閲覧：Cryptomatorで多数の動画を閲覧するには全体をスキャンする必要がありますが、HiddenDataはヘッダー内蔵サムネイルにより0.005秒で表示されます。</li>
+      </ul>
+
+      <div class="callout-box">
+        <div class="callout-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--neon-purple-light);"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        </div>
+        <div class="callout-content">
+          <div class="callout-title" data-i18n="compSec3SummaryTitle">どちらを選ぶべきか？</div>
+          <p data-i18n="compSec3SummaryDesc">Office文書やソースコードフォルダ全体を仮想ドライブとして暗号化したい場合はCryptomatorが最適です。写真、GIF、4K動画をPCとスマホで痕跡を残さず快適に鑑賞・同期したい場合はHiddenDataが圧倒的に優れています。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Deep Dive vs Cloud Vaults -->
+    <section id="cloud-lockers" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">04.</span>
+        <h2 class="wp-section-title" data-i18n="compSec4Title">徹底比較: HiddenData vs クラウド標準金庫</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec4P1">OneDriveやDropboxなどのクラウド保管庫は手軽に見えますが、構造的な制約があります：</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="compSec4Li1">サーバー側での鍵管理：事業者が暗号鍵を管理しているため、AI学習用のデータ収集や法的手続きに応じる形でファイル内容が復号される可能性があります。</li>
+        <li data-i18n="compSec4Li2">端末側での事前暗号化：HiddenDataは送信前に端末上でAES-256-GCM暗号化を行うため、Googleのサーバー上でも完全な暗号文としてのみ存在します。</li>
+        <li data-i18n="compSec4Li3">月額費用の負担：クラウド金庫は月額$9.99〜$15の契約が必要です。HiddenDataはお手持ちのGoogle Driveに接続し、$8.99の1回払いで永久に使用できます。</li>
+      </ul>
+    </section>
+
+    <!-- Section 5: Deep Dive vs Local File Hiders -->
+    <section id="local-hiders" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">05.</span>
+        <h2 class="wp-section-title" data-i18n="compSec5Title">徹底比較: HiddenData vs スマホ写真隠しアプリ</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec5P1">アプリストアの電卓型写真隠しアプリの85%以上は、実際には暗号化を行っていません：</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="compSec5Li1">単なる不可視化 vs 本物の暗号学：ファイル名の先頭にドットを付けたり隠しフォルダに移すだけの場合、スマホをUSBでPCに接続すればPINなしですべての写真がコピー可能です。</li>
+        <li data-i18n="compSec5Li2">標準AES-256-GCM & PBKDF2の安全性：HiddenDataはNIST標準のAES-256-GCMと10万回のPBKDF2を採用しており、ストレージを物理的に複製されてもパスワードがなければ総当たり攻撃による復号は計算上不可能です。</li>
+      </ul>
+    </section>
+
+    <!-- Section 6: Decision Guide & Recommendations -->
+    <section id="verdict" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">06.</span>
+        <h2 class="wp-section-title" data-i18n="compSec6Title">選択ガイド: あなたに最適なツールは？</h2>
+      </div>
+
+      <div class="verdict-grid">
+        <div class="verdict-card" style="border-color:var(--border-purple); background:rgba(124, 77, 255, 0.04);">
+          <h3 class="verdict-title" style="color:var(--neon-purple-light);" data-i18n="verdictHdTitle">以下のような場合はHiddenDataをおすすめします:</h3>
+          <ul class="verdict-pros-list">
+            <li data-i18n="verdictHdLi1">PCで個人的な写真や4K動画をディスク痕跡（0B）なしで閲覧したいとき。</li>
+            <li data-i18n="verdictHdLi2">作業画面の横に手軽に開けるChromeサイドパネル金庫を使いたいとき。</li>
+            <li data-i18n="verdictHdLi3">スマホで保存したメディアをPCのGoogleドライブ経由ですぐに見たいとき。</li>
+            <li data-i18n="verdictHdLi4">月額料金なしの$8.99買い切り永久ライセンスを好むとき。</li>
+          </ul>
+        </div>
+
+        <div class="verdict-card">
+          <h3 class="verdict-title" data-i18n="verdictOtherTitle">以下のような場合は他の選択肢を検討してください:</h3>
+          <ul class="verdict-pros-list">
+            <li class="verdict-cons-list" data-i18n="verdictOtherLi1">Gitリポジトリや開発フォルダ全体を暗号化したい場合 → Cryptomatorを推奨。</li>
+            <li class="verdict-cons-list" data-i18n="verdictOtherLi2">社内SSO連携やチーム間でのフォルダ共有が必要な場合 → Boxcryptor等の法人クラウドを推奨。</li>
+            <li class="verdict-cons-list" data-i18n="verdictOtherLi3">家族にスマホ画面をチラ見されるのを防ぐだけでよい場合 → OS標準のセキュリティフォルダを推奨。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 48px 0 20px 0;">
+        <a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="btn btn-primary" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span data-i18n="btnTryEarlyAccess">Android 早期アクセスAPKを体験 (v1.0.32)</span>
+        </a>
+        <a href="use-cases.html" class="btn btn-secondary" style="margin-left: 12px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <span data-i18n="btnExploreUseCases">実際の活用事例を見る</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 7: Comparison FAQ -->
+    <section id="faq" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">07.</span>
+        <h2 class="wp-section-title" data-i18n="compSec7Title">比較に関するよくある質問 (FAQ)</h2>
+      </div>
+
+      <div class="faq-accordion-group">
+        <details class="faq-item" open>
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q1.</span> <span data-i18n="compFaqQ1">なぜHiddenDataはCryptomatorのように仮想ドライブを使用しないのですか？</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA1">仮想ドライブにはFUSE等のカーネルドライバが必要で、管理者権限が必須となり不具合の原因になることがあります。また、仮想ドライブから開かれたメディアはプレイヤーの一時キャッシュに保存されます。HiddenDataはブラウザサンドボックス内でMediaSourceとTypedArrayを用いてメモリ内のみで直接ストリーミングするため、カーネルドライバも一時ファイルも不要です。</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q2.</span> <span data-i18n="compFaqQ2">Google Driveに暗号化ファイルを保存するとアカウントが停止されますか？</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA2">いいえ、停止されることはありません。Google Driveの利用規約では暗号化されたバックアップファイルの保管が認められています。HiddenDataはGoogle公式のREST API仕様と制限されたdrive.file権限の範囲内で合法的に動作します。</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q3.</span> <span data-i18n="compFaqQ3">永久ライセンス（Lifetime）は本当に追加料金が不要ですか？</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA3">はい、追加料金は一切ありません。HiddenData Proは$8.99の1回払いのみで、月額・年額のサブスクリプションはありません。Googleアカウントの連携により、PCとAndroidの双方で永久にご利用いただけます。</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q4.</span> <span data-i18n="compFaqQ4">後から暗号化を解除して元のファイルに戻すことはできますか？</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA4">いつでも可能です。ファイル一覧から対象を選択して「元のファイルとしてエクスポート」を実行すれば、選択したローカルフォルダに元の写真、GIF、動画として綺麗に復号保存されます。</div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="32" height="32" style="border-radius:8px;">
+            <span style="font-weight:800; font-size:1.15rem; color:#FFFFFF;">HiddenData</span>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footerDesc">あなただけが開けるAES-256-GCMセキュリティスタジオ。PCとモバイルを横断する最も安全なプライベートメディア金庫。</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColProduct">製品</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#features" class="footer-link" data-i18n="navFeatures">機能紹介</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="navSecurity">セキュリティ白書</a></li>
+            <li><a href="compare.html" class="footer-link" data-i18n="navCompare">製品比較</a></li>
+            <li><a href="use-cases.html" class="footer-link" data-i18n="navUseCases">活用事例 & FAQ</a></li>
+            <li><a href="early-access.html" class="footer-link" data-i18n="navEarlyAccess">アーリーアクセス</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="footer-link" download>Android APK (v1.0.32)</a></li>
+            <li><a href="index.html#chrome-ext" class="footer-link">Chrome Extension</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColLegal">法的通知 & 信頼性</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html" class="footer-link" data-i18n="footerPrivacy">プライバシーポリシー</a></li>
+            <li><a href="privacy.html#terms" class="footer-link" data-i18n="footerTerms">利用規約 & 返金ポリシー</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="footerAudit">暗号化監査白書</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColSupport">サポート</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:truehoop81@gmail.com" class="footer-link" data-i18n="footerEmail">開発者へのお問い合わせ (truehoop81@gmail.com)</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">© 2026 HiddenData Team. All rights reserved.</div>
+        <div class="footer-merchant-note" data-i18n="footerMerchant">決済代行および商取引記録: Lemon Squeezy (Merchant of Record)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script: I18N Engine initialization -->
+  <script type="module">
+    import { PAGES_I18N } from "../i18n-pages.js";
+    import { initI18n } from "../i18n.js";
+    initI18n(PAGES_I18N);
+  </script>
+</body>
+</html>
