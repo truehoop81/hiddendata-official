@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="comparePageTitle">HiddenData vs Cryptomator vs Cofres em Nuvem | Guia Comparativo</title>
+  <meta name="description" content="Comparação técnica: HiddenData vs Cryptomator e cofres em nuvem. Compare streaming em RAM sem rastro em disco, AES-256-GCM AEAD, escopo do Google Drive e preços.">
+  <link rel="canonical" href="https://truehoop81.github.io/pt-BR/compare.html">
+  <link rel="alternate" hreflang="x-default" href="https://truehoop81.github.io/compare.html">
+  <link rel="alternate" hreflang="en" href="https://truehoop81.github.io/compare.html">
+  <link rel="alternate" hreflang="ko" href="https://truehoop81.github.io/ko/compare.html">
+  <link rel="alternate" hreflang="ja" href="https://truehoop81.github.io/ja/compare.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://truehoop81.github.io/zh-TW/compare.html">
+  <link rel="alternate" hreflang="es" href="https://truehoop81.github.io/es/compare.html">
+  <link rel="alternate" hreflang="de" href="https://truehoop81.github.io/de/compare.html">
+  <link rel="alternate" hreflang="fr" href="https://truehoop81.github.io/fr/compare.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://truehoop81.github.io/pt-BR/compare.html">
+  <link rel="icon" type="image/png" href="../icon-128.png">
+  <link rel="apple-touch-icon" href="../icon-128.png">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HiddenData">
+  <meta property="og:title" content="HiddenData vs Cryptomator vs Cofres em Nuvem | Guia Comparativo">
+  <meta property="og:description" content="Comparação técnica: HiddenData vs Cryptomator e cofres em nuvem. Compare streaming em RAM sem rastro em disco, AES-256-GCM AEAD, escopo do Google Drive e preços.">
+  <meta property="og:url" content="https://truehoop81.github.io/pt-BR/compare.html">
+  <meta property="og:image" content="https://truehoop81.github.io/og-image-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HiddenData vs Alternatives Vault Comparison Guide">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HiddenData vs Cryptomator vs Cofres em Nuvem | Guia Comparativo">
+  <meta name="twitter:description" content="Comparação técnica: HiddenData vs Cryptomator e cofres em nuvem. Compare streaming em RAM sem rastro em disco, AES-256-GCM AEAD, escopo do Google Drive e preços.">
+  <meta name="twitter:image" content="https://truehoop81.github.io/og-image-1200x630.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../pages.css">
+
+  <!-- JSON-LD Structured Data: WebPage + FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://truehoop81.github.io/compare.html",
+        "name": "HiddenData vs Alternatives Comparison Matrix",
+        "description": "Evidence-based architectural and feature comparison between HiddenData, Cryptomator, Cloud Locker Apps, and Local File Hiders.",
+        "url": "https://truehoop81.github.io/compare.html",
+        "inLanguage": ["en", "ko", "ja", "zh-TW", "es", "de", "fr", "pt-BR"]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does HiddenData differ from Cryptomator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cryptomator is designed as a general-purpose virtual drive encryption tool that mounts a virtual filesystem (WebDAV/FUSE). HiddenData is purpose-built as an in-memory streaming media studio, running natively inside the Chrome Side Panel and Android app. HiddenData writes zero bytes of temporary files to disk, plays 4K/GIF instantly without mounting virtual drives, and uses the least-privilege Google Drive drive.file scope."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is HiddenData superior to traditional Cloud Vaults like Dropbox Vault or OneDrive Vault?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Traditional cloud lockers store encryption keys on company servers or manage them through cloud identity, meaning cloud administrators, AI training scrapers, and legal subpoenas can decrypt and inspect files. HiddenData enforces client-side Zero-Knowledge: files are encrypted locally with AES-256-GCM before uploading, and Google Drive only ever receives unreadable ciphertext."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the security difference between HiddenData and free mobile 'File Hider' apps?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most free mobile file hiders do not perform genuine cryptographic encryption; they simply prepend a dot (.) to filenames, move files into hidden subfolders, or place a PIN lock on an unencrypted SQLite database. Forensic software (or connecting the phone via USB MTP/ADB) immediately exposes all plaintext files. HiddenData enforces true 256-bit AES-GCM envelope encryption with 100,000 PBKDF2 iterations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why choose HiddenData's Lifetime Pro license over monthly subscriptions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many commercial vaults charge $5 to $15 every month. HiddenData offers a permanent Pro Lifetime License for a one-time purchase of $8.99 with no recurring fees, syncing automatically across both PC Chrome Extension and Android mobile via your private Google Drive vault."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="../icon-128.png" alt="HiddenData Logo" class="brand-logo" width="38" height="38">
+        <span class="brand-text">HiddenData</span>
+      </a>
+
+      <!-- Desktop Navigation (>= 992px) -->
+      <nav class="desktop-nav" aria-label="Desktop Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html#features" class="nav-link" data-i18n="navFeatures">Recursos</a></li>
+          <li><a href="security-architecture.html" class="nav-link" data-i18n="navSecurity">Whitepaper de Segurança</a></li>
+          <li><a href="compare.html" class="nav-link active" data-i18n="navCompare">Comparativo</a></li>
+          <li><a href="use-cases.html" class="nav-link" data-i18n="navUseCases">Casos de Uso e FAQ</a></li>
+          <li><a href="early-access.html" class="nav-link nav-link-highlight" data-i18n="navEarlyAccess">Acesso Antecipado</a></li>
+          <li><a href="privacy.html" class="nav-link" data-i18n="navPrivacy">Privacidade</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions (Language, Hamburger Toggle) -->
+      <div class="header-actions">
+        <!-- 8 Language Switcher Dropdown -->
+        <div class="lang-switcher-wrapper">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="zh_TW">繁體中文</option>
+            <option value="es">Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="pt_BR" selected>Português (BR)</option>
+          </select>
+          <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+
+        <!-- Mobile Hamburger Toggle Button (< 992px) -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Overlay (< 992px) -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-brand">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="28" height="28" class="brand-logo">
+            <span class="brand-text">HiddenData</span>
+          </div>
+          <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html#features" class="mobile-nav-link" data-i18n="navFeatures">Recursos</a></li>
+          <li><a href="security-architecture.html" class="mobile-nav-link" data-i18n="navSecurity">Whitepaper de Segurança</a></li>
+          <li><a href="compare.html" class="mobile-nav-link active" data-i18n="navCompare">Comparativo</a></li>
+          <li><a href="use-cases.html" class="mobile-nav-link" data-i18n="navUseCases">Casos de Uso e FAQ</a></li>
+          <li><a href="early-access.html" class="mobile-nav-link mobile-nav-link-highlight" data-i18n="navEarlyAccess">Acesso Antecipado</a></li>
+          <li><a href="index.html#pricing" class="mobile-nav-link" data-i18n="navPricing">Preços</a></li>
+          <li><a href="index.html#guide" class="mobile-nav-link" data-i18n="navGuide">Guia Android</a></li>
+          <li><a href="index.html#faq" class="mobile-nav-link" data-i18n="navFaq">Dúvidas</a></li>
+          <li><a href="privacy.html" class="mobile-nav-link" data-i18n="navPrivacy">Privacidade</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj" class="btn btn-primary mobile-btn-install" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="21.17" y1="8" x2="12" y2="8"></line>
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+            </svg>
+            <span data-i18n="btnChromeStore">Adicionar ao Chrome</span>
+          </a>
+          <a href="early-access.html" class="btn btn-secondary mobile-btn-early">
+            <span data-i18n="navEarlyAccess">Acesso Antecipado</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sticky Subpage Navigation -->
+  <div class="subpage-nav-bar">
+    <div class="container subpage-nav-inner">
+      <ul class="toc-pills">
+        <li><a href="#overview" class="toc-pill-link" data-i18n="tocCompOverview">1. Visão Geral</a></li>
+        <li><a href="#matrix" class="toc-pill-link" data-i18n="tocCompMatrix">2. Matriz de Recursos</a></li>
+        <li><a href="#cryptomator" class="toc-pill-link" data-i18n="tocCompCryptomator">3. vs Cryptomator</a></li>
+        <li><a href="#cloud-lockers" class="toc-pill-link" data-i18n="tocCompCloud">4. vs Cofres em Nuvem</a></li>
+        <li><a href="#local-hiders" class="toc-pill-link" data-i18n="tocCompHiders">5. vs Ocultadores Locais</a></li>
+        <li><a href="#verdict" class="toc-pill-link" data-i18n="tocCompVerdict">6. Guia de Escolha</a></li>
+        <li><a href="#faq" class="toc-pill-link" data-i18n="tocCompFaq">7. FAQ Comparativo</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="page-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        <span data-i18n="compareBadge">COMPARATIVO ARQUITETÔNICO OBJETIVO E BENCHMARKS</span>
+      </div>
+
+      <h1 class="page-hero-title">
+        <span data-i18n="compareHeroTitle1">HiddenData versus Alternativas</span><br>
+        <span class="gradient-text-purple" data-i18n="compareHeroTitle2">Comparativo de Arquitetura e Recursos</span>
+      </h1>
+
+      <p class="page-hero-subtitle" data-i18n="compareHeroSub">Uma análise técnica imparcial entre HiddenData, Cryptomator, cofres comerciais em nuvem e aplicativos de ocultação locais em criptografia, perícia forense, streaming e permissões.</p>
+
+      <div class="page-meta-bar">
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span data-i18n="compareMetaAudited">Critérios Atualizados: Março de 2026</span>
+        </span>
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span data-i18n="compareMetaObjective">Avaliação Técnica Imparcial</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container whitepaper-article">
+
+    <!-- Section 1: Overview Cards of the 4 Compared Solutions -->
+    <section id="overview" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">01.</span>
+        <h2 class="wp-section-title" data-i18n="compSec1Title">As 4 Categorias de Soluções Comparadas</h2>
+      </div>
+
+      <div class="verdict-grid">
+        <!-- HiddenData -->
+        <div class="verdict-card" style="border-color:var(--border-purple); background:rgba(124, 77, 255, 0.05);">
+          <span class="verdict-badge badge-purple">OUR SOLUTION</span>
+          <h3 class="verdict-title">HiddenData Studio</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardHdDesc">Estúdio multimídia Zero-Knowledge dedicado. Transmite 4K/GIF diretamente na RAM no Painel Lateral do Chrome e Android sem arquivos temporários no disco.</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardHdPro1">0B de arquivos temporários em disco</li>
+            <li data-i18n="compCardHdPro2">Streaming nativo de 4K/GIF no navegador</li>
+            <li data-i18n="compCardHdPro3">Escopo mínimo drive.file</li>
+            <li data-i18n="compCardHdPro4">Licença vitalícia por $8.99</li>
+          </ul>
+        </div>
+
+        <!-- Cryptomator -->
+        <div class="verdict-card">
+          <span class="verdict-badge badge-neutral">OPEN SOURCE</span>
+          <h3 class="verdict-title">Cryptomator</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardCryptoDesc">Ferramenta de código aberto consolidada para criptografia em nuvem. Monta discos virtuais (FUSE/WebDAV) no gerenciador de arquivos do sistema.</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardCryptoPro1">Criptografia Zero-Knowledge AES-256</li>
+            <li data-i18n="compCardCryptoPro2">Compatível com várias nuvens</li>
+            <li class="verdict-cons-list" data-i18n="compCardCryptoCon1">Exige montagem de discos virtuais</li>
+            <li class="verdict-cons-list" data-i18n="compCardCryptoCon2">Sem streaming em painel lateral do navegador</li>
+          </ul>
+        </div>
+
+        <!-- Standard Cloud Vaults -->
+        <div class="verdict-card">
+          <span class="verdict-badge badge-gold">PROPRIETARY CLOUD</span>
+          <h3 class="verdict-title">Cloud Vaults (Dropbox/OneDrive)</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardCloudDesc">Pastas protegidas por PIN/2FA integradas aos principais serviços em nuvem (Dropbox Vault, OneDrive Vault).</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardCloudPro1">Integração conveniente ao ecossistema</li>
+            <li class="verdict-cons-list" data-i18n="compCardCloudCon1">O servidor guarda as chaves (não é Zero-Knowledge)</li>
+            <li class="verdict-cons-list" data-i18n="compCardCloudCon2">Exige assinatura mensal contínua</li>
+          </ul>
+        </div>
+
+        <!-- Local File Hiders -->
+        <div class="verdict-card">
+          <span class="verdict-badge badge-red">MOBILE APP LOCKERS</span>
+          <h3 class="verdict-title">Local File Hiders & Lockers</h3>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:12px;" data-i18n="compCardHidersDesc">Aplicativos móveis de cofre disfarçado (como calculadora). Na maioria das vezes, apenas renomeiam ou movem arquivos sem criptografia.</p>
+          <ul class="verdict-pros-list">
+            <li data-i18n="compCardHidersPro1">Interface móvel simples</li>
+            <li class="verdict-cons-list" data-i18n="compCardHidersCon1">Acesso imediato aos arquivos ao plugar via USB/ADB</li>
+            <li class="verdict-cons-list" data-i18n="compCardHidersCon2">Sem sincronização com navegadores de computador</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Comprehensive Feature Matrix -->
+    <section id="matrix" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">02.</span>
+        <h2 class="wp-section-title" data-i18n="compSec2Title">Matriz Comparativa Técnica Detalhada</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec2P1">Avaliação minuciosa de recursos em criptografia, perícia forense em disco, reprodução de mídia, isolamento na nuvem e modelos de cobrança.</p>
+
+      <div class="table-container">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;" data-i18n="thCompFeature">Recurso / Capacidade</th>
+              <th class="th-highlight-hd" style="width: 25%;">HiddenData Studio</th>
+              <th style="width: 18%;">Cryptomator</th>
+              <th style="width: 16%;">Cloud Locker Apps</th>
+              <th style="width: 16%;">Local File Hiders</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <!-- Category: Cryptography & Architecture -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catCryptoArch">1. Criptografia e Arquitetura Central</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompAlgo">Algoritmo e Modo de Criptografia</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-purple">AES-256-GCM AEAD</span></td>
+              <td>AES-256-CTR + HMAC</td>
+              <td>AES-256-CBC (Server managed)</td>
+              <td><span class="badge-tag badge-red">None / File Rename</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompZk">Arquitetura Zero-Knowledge</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ 100% Zero-Knowledge</span></td>
+              <td><span class="cell-icon-check">✓ 100% Zero-Knowledge</span></td>
+              <td><span class="cell-icon-cross">✗ Provider Holds Keys</span></td>
+              <td><span class="cell-icon-cross">✗ Fake Protection</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompKdf">Função de Derivação de Chaves (KDF)</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-purple">PBKDF2-SHA256 (100k)</span></td>
+              <td>Scrypt</td>
+              <td>Cloud Identity / OAuth</td>
+              <td>Plain PIN / MD5</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompRekey">Troca de Senha sem Recriptografar Dados</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Yes (0.001s KeySlot)</span></td>
+              <td><span class="cell-icon-cross">✗ Requires Full Re-encrypt</span></td>
+              <td><span class="cell-icon-partial">▲ Cloud Password Reset</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+            </tr>
+
+            <!-- Category: Disk Forensics & Residue -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catForensics">2. Perícia Forense e Resíduo em Disco</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompDiskResidue">Arquivos Temporários ao Descriptografar</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-green">0 Bytes (Zero-Disk)</span></td>
+              <td>OS Virtual FS Cache</td>
+              <td>Browser / Desktop Temp</td>
+              <td><span class="badge-tag badge-red">Plaintext in App Data</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompRamStream">Mecanismo de Streaming</strong></td>
+              <td class="td-highlight-hd">Direct RAM TypedArray</td>
+              <td>FUSE / WebDAV Mount</td>
+              <td>Full File Download</td>
+              <td>Direct File Read</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompZeroize">Limpeza de Memória RAM ao Fechar</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Explicit Zeroize</span></td>
+              <td><span class="cell-icon-partial">▲ OS Dependent</span></td>
+              <td><span class="cell-icon-cross">✗ OS Swap / Pagefile</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompForensicImmune">Imunidade a Recuperação Forense (EnCase/FTK)</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ 100% Immune</span></td>
+              <td><span class="cell-icon-partial">▲ Moderate (Mount leak)</span></td>
+              <td><span class="cell-icon-cross">✗ High Residual Risk</span></td>
+              <td><span class="cell-icon-cross">✗ 0% (Trivially Dumped)</span></td>
+            </tr>
+
+            <!-- Category: Media Experience & Playback -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catMediaExp">3. Experiência de Mídia e Navegação</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompBrowserPlay">Streaming Nativo 4K / GIF no Navegador</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Chrome Side Panel</span></td>
+              <td><span class="cell-icon-cross">✗ External Media Player</span></td>
+              <td><span class="cell-icon-partial">▲ Cloud Web Player</span></td>
+              <td><span class="cell-icon-cross">✗ Mobile App Only</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompThumbSpeed">Velocidade de Leitura de Miniaturas</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-cyan">0.005s (V3 Header)</span></td>
+              <td>Scans Full File Payload</td>
+              <td>Cloud-Generated Thumb</td>
+              <td>Unencrypted Local Thumb</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompStealth">Modo Antiespião em Um Toque</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Instant Panic Shield</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+              <td><span class="cell-icon-cross">✗ None</span></td>
+              <td><span class="cell-icon-partial">▲ Fake Calculator Screen</span></td>
+            </tr>
+
+            <!-- Category: Cloud Isolation & Permissions -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catCloudScope">4. Privacidade na Nuvem e Limite de Acesso</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompGdriveScope">Escopo de Permissões no Google Drive</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-green">drive.file (Isolated)</span></td>
+              <td>Local Folder Sync</td>
+              <td><span class="badge-tag badge-red">Full Account Scope</span></td>
+              <td>N/A (No Cloud Sync)</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompCloudVisibility">Visibilidade pelo Provedor de Nuvem</strong></td>
+              <td class="td-highlight-hd">100% Random Ciphertext</td>
+              <td>100% Random Ciphertext</td>
+              <td><span class="badge-tag badge-red">Provider Scans Content</span></td>
+              <td>N/A</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompCrossPlatform">Compatibilidade Binária Android e PC</strong></td>
+              <td class="td-highlight-hd"><span class="cell-icon-check">✓ Shared V3 Container</span></td>
+              <td><span class="cell-icon-check">✓ Shared Format</span></td>
+              <td><span class="cell-icon-partial">▲ Proprietary Web/App</span></td>
+              <td><span class="cell-icon-cross">✗ Android Only</span></td>
+            </tr>
+
+            <!-- Category: Licensing & Pricing -->
+            <tr class="spec-category-header">
+              <td colspan="5" data-i18n="catPricingModel">5. Modelo de Preço e Propriedade</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompPricing">Estrutura de Preços</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-gold">$8.99 Lifetime (1-Time)</span></td>
+              <td>Free PC / $14.99 Mobile</td>
+              <td>$9.99 ~ $15.00 / month</td>
+              <td>Ad-Heavy / $3.99/mo</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowCompAccount">Obrigatoriedade de Cadastro de Conta</strong></td>
+              <td class="td-highlight-hd"><span class="badge-tag badge-green">None (Anonymous)</span></td>
+              <td><span class="badge-tag badge-green">None</span></td>
+              <td>Mandatory Corporate ID</td>
+              <td>Varies (Ad trackers)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 3: Deep Dive Competitor Analysis -->
+    <section id="cryptomator" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">03.</span>
+        <h2 class="wp-section-title" data-i18n="compSec3Title">Análise Detalhada: HiddenData vs Cryptomator</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec3P1">O Cryptomator é uma ferramenta de código aberto excelente e respeitada por sua transparência. No entanto, sua arquitetura atende a necessidades distintas das do HiddenData:</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="compSec3Li1">Disco Virtual versus Painel Lateral: O Cryptomator monta discos virtuais no sistema. Ideal para documentos comuns, mas ao abrir vídeos ele aciona o reprodutor do sistema, deixando caches em disco e histórico.</li>
+        <li data-i18n="compSec3Li2">Streaming Zero-Disco na RAM: O HiddenData roda diretamente no Painel Lateral do Chrome usando Web Crypto e TypedArrays, descriptografando em blocos de 64KB na RAM sem gravar 1 byte no disco.</li>
+        <li data-i18n="compSec3Li3">Galerias Pesadas de Vídeo: No Cryptomator, navegar por muitos vídeos requer ler os arquivos inteiros para gerar prévias. O HiddenData lê miniaturas embutidas no cabeçalho V3 em 0,005 segundo.</li>
+      </ul>
+
+      <div class="callout-box">
+        <div class="callout-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--neon-purple-light);"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        </div>
+        <div class="callout-content">
+          <div class="callout-title" data-i18n="compSec3SummaryTitle">Qual escolher?</div>
+          <p data-i18n="compSec3SummaryDesc">Use o Cryptomator se você precisa proteger pastas de trabalho de escritório ou repositórios de código em discos virtuais. Escolha o HiddenData se deseja um estúdio privado ultrarrápido para assistir e sincronizar fotos, GIFs e vídeos 4K entre Android e PC com zero rastro no disco.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Deep Dive vs Cloud Vaults -->
+    <section id="cloud-lockers" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">04.</span>
+        <h2 class="wp-section-title" data-i18n="compSec4Title">Análise Detalhada: HiddenData vs Cofres em Nuvem</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec4P1">Os cofres integrados aos serviços em nuvem (OneDrive Vault, Dropbox Vault) têm limitações graves de privacidade:</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="compSec4Li1">Chaves nas Mãos do Servidor: Como o provedor controla as chaves, ele pode descriptografar seus arquivos para treinar IA ou responder a ordens judiciais.</li>
+        <li data-i18n="compSec4Li2">Criptografia Prévia no Dispositivo: Com o HiddenData, os dados são criptografados com AES-256-GCM antes de sair do aparelho. O Google Drive só armazena blocos binários indecifráveis.</li>
+        <li data-i18n="compSec4Li3">A Armadilha da Mensalidade: Cofres tradicionais exigem assinaturas mensais caras ($9.99 a $15/mês). O HiddenData se conecta ao seu Google Drive por um pagamento único de $8.99 vitalício.</li>
+      </ul>
+    </section>
+
+    <!-- Section 5: Deep Dive vs Local File Hiders -->
+    <section id="local-hiders" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">05.</span>
+        <h2 class="wp-section-title" data-i18n="compSec5Title">Análise Detalhada: HiddenData vs Ocultadores Locais</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="compSec5P1">Mais de 85% dos aplicativos de cofre de fotos da Play Store não realizam criptografia real:</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="compSec5Li1">Ocultamento versus Criptografia: A maioria apenas adiciona um ponto no início do arquivo ou o move para pastas ocultas. Basta conectar o celular ao PC via USB para copiar todas as fotos sem senha.</li>
+        <li data-i18n="compSec5Li2">Criptografia Padrão AES-256-GCM e PBKDF2: O HiddenData aplica o padrão AES-256-GCM do NIST com 100.000 iterações PBKDF2. Mesmo clonando a memória física, decodificar os dados sem a senha é computacionalmente inviável contra ataques de força bruta.</li>
+      </ul>
+    </section>
+
+    <!-- Section 6: Decision Guide & Recommendations -->
+    <section id="verdict" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">06.</span>
+        <h2 class="wp-section-title" data-i18n="compSec6Title">Guia de Decisão: Qual Solução Atende Você?</h2>
+      </div>
+
+      <div class="verdict-grid">
+        <div class="verdict-card" style="border-color:var(--border-purple); background:rgba(124, 77, 255, 0.04);">
+          <h3 class="verdict-title" style="color:var(--neon-purple-light);" data-i18n="verdictHdTitle">Escolha o HiddenData se você:</h3>
+          <ul class="verdict-pros-list">
+            <li data-i18n="verdictHdLi1">Deseja ver fotos privadas, GIFs e vídeos 4K no PC sem deixar vestígios no disco (0B).</li>
+            <li data-i18n="verdictHdLi2">Quer um visualizador elegante no Painel Lateral do Chrome enquanto trabalha.</li>
+            <li data-i18n="verdictHdLi3">Quer tirar fotos no celular e assisti-las na hora no PC pelo Google Drive.</li>
+            <li data-i18n="verdictHdLi4">Não quer mensalidades e prefere pagar uma única vez $8.99 para sempre.</li>
+          </ul>
+        </div>
+
+        <div class="verdict-card">
+          <h3 class="verdict-title" data-i18n="verdictOtherTitle">Considere outras opções se você:</h3>
+          <ul class="verdict-pros-list">
+            <li class="verdict-cons-list" data-i18n="verdictOtherLi1">Precisa proteger sistemas de arquivos inteiros (código-fonte, repositórios Git) → Escolha o Cryptomator.</li>
+            <li class="verdict-cons-list" data-i18n="verdictOtherLi2">Precisa de pastas compartilhadas em equipe com login corporativo (SSO) → Escolha soluções corporativas.</li>
+            <li class="verdict-cons-list" data-i18n="verdictOtherLi3">Apenas quer evitar que uma criança curiosa mexa no seu celular → Use a pasta segura do próprio aparelho.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 48px 0 20px 0;">
+        <a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="btn btn-primary" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span data-i18n="btnTryEarlyAccess">Testar APK de Acesso Antecipado para Android (v1.0.33)</span>
+        </a>
+        <a href="use-cases.html" class="btn btn-secondary" style="margin-left: 12px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <span data-i18n="btnExploreUseCases">Explorar Casos de Uso Reais</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 7: Comparison FAQ -->
+    <section id="faq" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">07.</span>
+        <h2 class="wp-section-title" data-i18n="compSec7Title">Perguntas Frequentes sobre a Comparativa</h2>
+      </div>
+
+      <div class="faq-accordion-group">
+        <details class="faq-item" open>
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q1.</span> <span data-i18n="compFaqQ1">Por que o HiddenData não usa um disco virtual como o Cryptomator?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA1">Discos virtuais demandam drivers de sistema (como FUSE) que exigem permissões de administrador e podem causar travamentos. Além disso, reprodutores comuns gravam caches em disco. O HiddenData transmite de forma segura no navegador usando MediaSource e TypedArrays, eliminando drivers e arquivos temporários por completo.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q2.</span> <span data-i18n="compFaqQ2">O Google Drive pode bloquear minha conta por enviar arquivos criptografados?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA2">Não. Os Termos de Serviço do Google Drive permitem expressamente o upload de backups criptografados. O HiddenData opera em total conformidade com a API REST oficial dentro da permissão restrita drive.file.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q3.</span> <span data-i18n="compFaqQ3">A licença Pro vitalícia é realmente em pagamento único?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA3">Sim, 100%. O HiddenData Pro custa $8.99 em pagamento único, sem nenhuma taxa mensal ou anual oculta. Uma vez adquirido, ele se sincroniza para sempre no PC e no Android.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q4.</span> <span data-i18n="compFaqQ4">Posso exportar meus arquivos de volta ao formato original no futuro?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="compFaqA4">A qualquer momento. Você pode selecionar os arquivos desejados ou todos eles e clicar em 'Exportar para Original'. O programa descriptografa tudo em segundos na pasta do computador que você escolher.</div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="32" height="32" style="border-radius:8px;">
+            <span style="font-weight:800; font-size:1.15rem; color:#FFFFFF;">HiddenData</span>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footerDesc">Estúdio de segurança AES-256-GCM Zero-Knowledge. O cofre multimídia multiplataforma mais seguro para PC e celular.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColProduct">Produto</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#features" class="footer-link" data-i18n="navFeatures">Recursos</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="navSecurity">Whitepaper de Segurança</a></li>
+            <li><a href="compare.html" class="footer-link" data-i18n="navCompare">Comparativo</a></li>
+            <li><a href="use-cases.html" class="footer-link" data-i18n="navUseCases">Casos de Uso e FAQ</a></li>
+            <li><a href="early-access.html" class="footer-link" data-i18n="navEarlyAccess">Acesso Antecipado</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="footer-link" download>Android APK (v1.0.33)</a></li>
+            <li><a href="index.html#chrome-ext" class="footer-link">Chrome Extension</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColLegal">Legal & Confiança</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html" class="footer-link" data-i18n="footerPrivacy">Política de Privacidade</a></li>
+            <li><a href="privacy.html#terms" class="footer-link" data-i18n="footerTerms">Termos de Serviço e Reembolso</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="footerAudit">Auditoria Criptográfica</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColSupport">Suporte</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:truehoop81@gmail.com" class="footer-link" data-i18n="footerEmail">Contato do Desenvolvedor (truehoop81@gmail.com)</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">© 2026 Equipe HiddenData. Todos os direitos reservados.</div>
+        <div class="footer-merchant-note" data-i18n="footerMerchant">Comerciante de Registro: Lemon Squeezy</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script: I18N Engine initialization -->
+  <script type="module">
+    import { PAGES_I18N } from "../i18n-pages.js";
+    import { initI18n } from "../i18n.js";
+    initI18n(PAGES_I18N);
+  </script>
+</body>
+</html>

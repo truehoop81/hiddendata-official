@@ -1,0 +1,40 @@
+# HiddenData Vault
+
+> HiddenData is a cross-platform, zero-disk, zero-knowledge encrypted media vault studio for PC (Chrome Extension) and Android (Native App), featuring in-memory AES-256-GCM streaming playback and client-side encrypted Google Drive cloud sync.
+
+## Overview
+
+HiddenData solves the vulnerability of sensitive photos, GIFs, and videos leaking through temporary cache files on disk, browser history, or cloud provider inspection. It operates under a strict Zero-Knowledge architecture: files are encrypted client-side before touching disk or cloud, and decrypted on-the-fly strictly within volatile memory (RAM) with 0 bytes written to disk caches.
+
+- **Primary Platforms**: PC / Mac / Linux (Google Chrome Extension via Side Panel and Fullscreen Studio) and Android (Native Kotlin / Jetpack Compose App).
+- **Core Use Cases**: Secure personal photo/video vault, zero-trace encrypted media viewing, client-side encrypted Google Drive backup, multi-device cross-platform synchronization without third-party relay servers.
+
+## Cryptographic & Technical Specifications
+
+- **Symmetric Encryption**: AES-256-GCM (Galois/Counter Mode) authenticated encryption with associated data (AEAD) ensuring confidentiality and cryptographic integrity verification.
+- **Key Derivation Function (KDF)**: PBKDF2-HMAC-SHA256 with 100,000 iterations and a 16-byte cryptographically secure random salt (`crypto.getRandomValues`).
+- **Key Slot Manager & Envelope Architecture**: Payload data is encrypted with an ephemeral Data Encryption Key (DEK). The DEK is sealed inside key slots wrapped by a Key Encryption Key (KEK) derived from the user's master credentials. Allows password updates and multi-device access without re-encrypting large media files.
+- **V3 Envelope Header**: 49-byte compact binary header with instant 0.005s embedded encrypted thumbnail previews for lightning-fast gallery browsing.
+- **Zero-Disk In-Memory Streaming**: 64KB chunked streaming engine decrypts video and image segments directly into RAM memory buffers. No decrypted blocks are ever flushed to disk, swap temp files, or OS temp directories.
+- **Google Drive Integration**: Minimal `https://www.googleapis.com/auth/drive.file` OAuth scope. HiddenData only accesses files created or opened by HiddenData itself (`.enc` and encrypted configuration files). It cannot read or modify any other files in the user's Google Drive.
+- **Cross-Platform Sync**: HMAC-SHA256 verified license and settings synchronization between Chrome Extension and Android Native App via user's private Google Drive storage. No proprietary synchronization servers or middleman telemetry.
+
+## Pricing & Licensing
+
+- **Free Plan**: 100% Lifetime Free for single local vault (unlimited file encryption/decryption, zero-disk in-memory streaming).
+- **Pro Plan**: Unlimited vaults (USB/SSD/work), subfolders, and encrypted Google Drive cloud sync ($8.99 lifetime).
+- **Pro Lifetime License**: $8.99 USD one-time purchase. Zero subscriptions, no recurring fees. Unlocks unlimited multi-vaults, subfolders, and encrypted Google Drive cloud sync, with simultaneous lifetime Pro activation across both PC Chrome Extension and Android Mobile App.
+- **Merchant of Record**: Polar (14-day money-back guarantee, secure international checkout via polar.sh).
+
+## Official Links & Resources
+
+- **Official Website**: https://truehoop81.github.io/
+- **Android Closed Beta Early Access**: https://truehoop81.github.io/early-access.html
+- **Security & Architecture Deep Dive**: https://truehoop81.github.io/security-architecture.html
+- **Competitive Comparison**: https://truehoop81.github.io/compare.html
+- **Use Cases & Workflows**: https://truehoop81.github.io/use-cases.html
+- **Privacy Policy**: https://truehoop81.github.io/privacy.html
+- **Chrome Web Store Extension**: https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj
+- **Android Early Access APK**: https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk
+- **Polar Checkout**: https://buy.polar.sh/polar_cl_lXw6jmqmt6jN00UCB0mMAtQkuEDNysBorrleJ1K69HI
+- **Full LLM Reference (llms-full.txt)**: https://truehoop81.github.io/llms-full.txt

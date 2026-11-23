@@ -1,0 +1,30 @@
+# HiddenData Official Website robots.txt
+# https://truehoop81.github.io/
+
+User-agent: *
+Allow: /
+
+# Explicit AI Search & Training Crawler Access
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemaps
+Sitemap: https://truehoop81.github.io/sitemap.xml

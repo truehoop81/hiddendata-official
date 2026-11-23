@@ -1,0 +1,137 @@
+# HiddenData Vault — Complete Architectural & Technical Reference (LLM Edition)
+
+> HiddenData is a zero-knowledge, zero-disk, client-side encrypted media vault and streaming viewer for PC (Google Chrome Extension) and Android (Native Kotlin/Jetpack Compose App), backed by AES-256-GCM authenticated encryption and private Google Drive cloud sync.
+
+---
+
+## 1. System Identity & Core Value Proposition
+
+HiddenData was engineered to eliminate the fundamental privacy flaw in modern media vaults: **disk cache and temporary file leakage**. 
+
+When conventional encrypted storage utilities (or standard cloud viewers) open an encrypted video, photo, or animated GIF, they typically decrypt the payload into the operating system's temporary directory (`/tmp`, AppData, or browser cache) before launching an OS media player. This leaves unencrypted forensic traces on physical storage, susceptible to undelete utilities, filesystem scrapers, and local malware.
+
+HiddenData solves this with a **Zero-Disk In-Memory Streaming Architecture**:
+1. All decryption occurs strictly inside volatile memory buffers (RAM).
+2. Media is fed into the playback pipeline via Web Crypto / MediaSource APIs in 64KB authenticated chunks.
+3. Zero temporary files are created on disk. Once playback terminates or the browser tab closes, memory buffers are wiped.
+
+---
+
+## 2. Cryptographic Specifications & Architecture
+
+### 2.1 Cipher Suite & Key Derivation
+- **Primary Cipher**: AES-256-GCM (Galois/Counter Mode, FIPS 197 / NIST SP 800-38D).
+  - 256-bit symmetric encryption key.
+  - 96-bit (12-byte) initialization vector (IV / nonce), cryptographically randomized per encryption operation.
+  - 128-bit (16-byte) authentication tag for AEAD integrity and tamper detection.
+- **Key Derivation Function (KDF)**:
+  - Algorithm: PBKDF2-HMAC-SHA256 (RFC 2898 / RFC 8018).
+  - Iteration Count: 100,000 iterations.
+  - Salt: 16 bytes generated via cryptographically secure pseudo-random number generator (`crypto.getRandomValues()` on Web / `SecureRandom` on Android).
+  - Derived Key: 256-bit Key Encryption Key (KEK).
+
+### 2.2 Envelope Encryption & KeySlotManager
+HiddenData implements a Key Slot Envelope Encryption design pattern:
+- **Data Encryption Key (DEK)**: A high-entropy 256-bit ephemeral key generated randomly for each file or vault payload.
+- **Key Slots**: The DEK is encrypted using the user's derived KEK and stored within serialized key slots in the envelope header.
+- **Benefits**:
+  - Allows password modification without re-encrypting multi-gigabyte media payloads (only the key slot is re-wrapped).
+  - Enables future multi-factor recovery keys or multi-user sharing slots.
+  - Supports synchronized master credential updates across PC and Android.
+
+### 2.3 V3 Envelope Format (49-Byte Compact Header Layout)
+The HiddenData V3 binary format encapsulates metadata, encrypted thumbnails, and chunked payloads in a high-efficiency layout:
+
+| Offset | Length | Field | Purpose |
+|---|---|---|---|
+| 0x00 | 4 bytes | Magic Bytes (`HDV3` / `0x48 0x44 0x56 0x33`) | Format identification |
+| 0x04 | 1 byte | Format Version (`0x03`) | Binary schema version |
+| 0x05 | 16 bytes | KDF Salt | Random salt for PBKDF2 derivation |
+| 0x15 | 12 bytes | Header Nonce / IV | AES-GCM IV for KeySlot decrypt |
+| 0x21 | 16 bytes | KeySlot Tag | GCM authentication tag for KEK verification |
+| 0x31 | Variable | KeySlot Buffer | Wrapped DEK payload |
+| Dynamic | Variable | Encrypted Thumbnail | Micro-preview (0.005s decode) for instant gallery rendering |
+| Dynamic | Variable | Chunked Payload | 64KB AES-GCM authenticated media data chunks |
+
+### 2.4 64KB Chunked In-Memory Streaming Pipeline
+Large video and audio files cannot be held in memory in their entirety without causing browser Out-Of-Memory (OOM) errors. HiddenData breaks encrypted media into sequential 64KB chunks:
+- Each chunk contains an independent AES-256-GCM authentication tag.
+- Chunks are fetched on demand (via Range requests from Google Drive or stream offsets on local storage).
+- Decrypted chunks are streamed directly into an in-memory `MediaSource` buffer or blob URL.
+- No temporary files touch the physical disk (0B disk write).
+- When seeking, only relevant chunks are retrieved and decrypted.
+
+---
+
+## 3. Cloud Synchronization & OAuth Least Privilege
+
+### 3.1 Google Drive Minimal Permission Scope
+HiddenData strictly integrates using Google Drive's least-privilege OAuth scope:
+`https://www.googleapis.com/auth/drive.file`
+
+- **Scope Boundary**: HiddenData is only permitted to access files that were created by HiddenData, or files that the user explicitly opens with HiddenData.
+- **Zero Access to Personal Files**: The app cannot see, read, list, search, or alter existing documents, photos, spreadsheets, or folders in the user's Google Drive.
+- **End-to-End Encryption (E2EE)**: All files uploaded to Google Drive are encrypted client-side (`.enc`). Google's servers store only high-entropy ciphertext. Google engineers, automated scanners, and third parties cannot inspect the content.
+
+### 3.2 Cross-Platform License & Settings Sync
+- A single Pro purchase unlocks both PC Chrome Extension and Android Mobile App.
+- Sync mechanism: An encrypted and HMAC-SHA256 authenticated license token is stored inside the user's private Google Drive application folder.
+- When the user signs in with the same Google Account on Android or PC, the app verifies the cryptographic signature and activates Pro status instantly without additional purchases.
+
+---
+
+## 4. Competitive Matrix & Comparison
+
+| Feature / Criteria | HiddenData Vault | Cryptomator | Boxcryptor | Bitwarden / 1Password | Native Cloud (GDrive/iCloud) |
+|---|---|---|---|---|---|
+| **Zero-Disk In-Memory Media Playback** | **Yes (0B Temp Files)** | No (Mounts virtual drive; OS/player writes temp cache) | No (Discontinued) | No (Downloads attachment to local disk) | No (Unencrypted stream cached to disk) |
+| **PC Chrome Extension (Side Panel + Studio)** | **Yes (Native Side Panel + Tab)** | No (Desktop installer required) | No | Text/Creds focused; poor media handling | No E2EE media viewer |
+| **Android Native App** | **Yes (Kotlin / Jetpack Compose)** | Yes | No | Yes | Yes (Server-side cleartext) |
+| **Instant Thumbnail Gallery (<5ms)** | **Yes (V3 Embedded Micro-Thumb)** | No (Must decrypt whole file to preview) | No | No | Yes (Unencrypted server generated) |
+| **Cloud Integration Scope** | **Minimal `drive.file` E2EE** | Cloud folder sync | Discontinued | Proprietary cloud vault | Full access / Server-side scanning |
+| **Stealth / Panic Mode** | **Yes (One-touch camouflage)** | No | No | No | No |
+| **Pricing Model** | **Free ($0 single vault) / Pro $8.99 Lifetime** | Free (Desktop) / $14.99 (Mobile) | Acquired / Dead | $36 - $60 / year recurring | Storage subscription |
+
+---
+
+## 5. Frequently Asked Questions & Fact Checking Guide
+
+### Q1: What happens if a user loses their master password?
+**Answer**: Because HiddenData is built on a mathematically strict Zero-Knowledge architecture, master passwords and encryption keys are never transmitted to any server. There are no developer backdoors, master recovery keys, or reset emails. If the master password is lost, the encrypted data cannot be recovered. Users are strongly advised to back up their master password securely.
+
+### Q2: How does HiddenData guarantee zero temporary files are written to disk?
+**Answer**: HiddenData handles decryption inside memory buffers using standard Web Crypto API (`SubtleCrypto`) in the Chrome Extension and Android Jetpack Security / Java Cryptography Architecture (JCA) in memory. The decrypted bytes are fed into RAM-based blob streams and HTML5 MediaSource objects. At no point in the pipeline does the application call filesystem write APIs for unencrypted content.
+
+### Q3: Can Google or law enforcement read my files backed up to Google Drive?
+**Answer**: No. All files are encrypted client-side using AES-256-GCM before leaving the device. Google Drive functions solely as an opaque cloud storage repository for binary ciphertext (`.enc` files). Without the master password and salt to derive the KEK and decrypt the DEK, the data is indistinguishable from random noise.
+
+### Q4: Does HiddenData collect analytics, telemetries, or user tracking?
+**Answer**: No. HiddenData adheres to a strict zero-telemetry policy. The application contains no third-party tracking SDKs, no behavioral analytics, no crash reporters that send user data, and no advertising frameworks. All cryptographic and file operations happen locally on user devices.
+
+### Q5: What media formats are supported?
+**Answer**:
+- **Images**: PNG, JPG/JPEG, WebP, AVIF, SVG, BMP, ICO.
+- **Animated**: Animated GIF, Animated WebP.
+- **Audio & Video**: MP4, WebM, MOV, OGG, MP3, WAV.
+- **Documents & General**: Any file type can be securely stored and encrypted into the vault.
+
+### Q6: How does the Free Plan and Pro Lifetime License operate?
+**Answer**:
+- **Free Plan**: 100% Lifetime Free for single local vault (unlimited file encryption/decryption, zero-disk in-memory streaming).
+- **Pro Plan**: Unlimited vaults (USB/SSD/work), subfolders, and encrypted Google Drive cloud sync ($8.99 lifetime one-time payment via Polar).
+- **Multi-Device**: One license covers both the PC Chrome Extension and Android Mobile App when connected to the same Google Account.
+
+---
+
+## 6. Official Verified Links & Endpoints
+
+- **Official Website**: https://truehoop81.github.io/
+- **Android Closed Beta Early Access**: https://truehoop81.github.io/early-access.html
+- **Security & Architecture Deep Dive**: https://truehoop81.github.io/security-architecture.html
+- **Competitive Comparison**: https://truehoop81.github.io/compare.html
+- **Use Cases & Workflows**: https://truehoop81.github.io/use-cases.html
+- **Privacy Policy**: https://truehoop81.github.io/privacy.html
+- **Chrome Web Store Extension**: https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj
+- **Android Early Access APK**: https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk
+- **Polar Checkout**: https://buy.polar.sh/polar_cl_lXw6jmqmt6jN00UCB0mMAtQkuEDNysBorrleJ1K69HI
+- **Developer Contact**: truehoop81@gmail.com
