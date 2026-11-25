@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T899BVJP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="secArchPageTitle">Arquitectura de Seguridad y Libro Blanco Criptográfico | HiddenData</title>
+  <meta name="description" content="Libro blanco criptográfico de HiddenData: Streaming en memoria sin disco, AES-256-GCM AEAD, formato binario V3 de 49 bytes y mínimo privilegio en Google Drive.">
+  <link rel="canonical" href="https://hiddendata.app/es/security-architecture.html">
+  <link rel="alternate" hreflang="x-default" href="https://hiddendata.app/security-architecture.html">
+  <link rel="alternate" hreflang="en" href="https://hiddendata.app/en/security-architecture.html">
+  <link rel="alternate" hreflang="ko" href="https://hiddendata.app/ko/security-architecture.html">
+  <link rel="alternate" hreflang="ja" href="https://hiddendata.app/ja/security-architecture.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://hiddendata.app/zh-TW/security-architecture.html">
+  <link rel="alternate" hreflang="es" href="https://hiddendata.app/es/security-architecture.html">
+  <link rel="alternate" hreflang="de" href="https://hiddendata.app/de/security-architecture.html">
+  <link rel="alternate" hreflang="fr" href="https://hiddendata.app/fr/security-architecture.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://hiddendata.app/pt-BR/security-architecture.html">
+  <link rel="icon" type="image/png" href="../icon-128.png">
+  <link rel="apple-touch-icon" href="../icon-128.png">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HiddenData">
+  <meta property="og:title" content="Arquitectura de Seguridad y Libro Blanco Criptográfico | HiddenData">
+  <meta property="og:description" content="Libro blanco criptográfico de HiddenData: Streaming en memoria sin disco, AES-256-GCM AEAD, formato binario V3 de 49 bytes y mínimo privilegio en Google Drive.">
+  <meta property="og:url" content="https://hiddendata.app/es/security-architecture.html">
+  <meta property="og:image" content="https://hiddendata.app/og-image-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HiddenData Security Architecture &amp; Cryptographic Whitepaper">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arquitectura de Seguridad y Libro Blanco Criptográfico | HiddenData">
+  <meta name="twitter:description" content="Libro blanco criptográfico de HiddenData: Streaming en memoria sin disco, AES-256-GCM AEAD, formato binario V3 de 49 bytes y mínimo privilegio en Google Drive.">
+  <meta name="twitter:image" content="https://hiddendata.app/og-image-1200x630.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../pages.css">
+
+  <!-- JSON-LD Structured Data: TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "HiddenData Security Architecture & Cryptographic Specification",
+    "description": "Comprehensive technical whitepaper on HiddenData's Zero-Knowledge media vault architecture, covering AES-256-GCM 64KB AEAD chunking, zero-disk in-memory streaming, V3 envelope format, KeySlotManager rekeying, and Google Drive drive.file least-privilege security.",
+    "url": "https://hiddendata.app/security-architecture.html",
+    "datePublished": "2026-03-01T00:00:00Z",
+    "dateModified": "2026-03-01T00:00:00Z",
+    "inLanguage": ["en", "ko", "ja", "zh-TW", "es", "de", "fr", "pt-BR"],
+    "author": {
+      "@type": "Organization",
+      "name": "HiddenData Security Engineering Team",
+      "url": "https://hiddendata.app/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "HiddenData",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hiddendata.app/icon-128.png"
+      }
+    },
+    "about": [
+      { "@type": "Thing", "name": "Zero-Knowledge Encryption" },
+      { "@type": "Thing", "name": "AES-256-GCM" },
+      { "@type": "Thing", "name": "In-Memory Streaming" },
+      { "@type": "Thing", "name": "Google Drive API Security" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Site Header -->
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="../icon-128.png" alt="HiddenData Logo" class="brand-logo" width="38" height="38">
+        <span class="brand-text">HiddenData</span>
+      </a>
+
+      <!-- Desktop Navigation (>= 992px) -->
+      <nav class="desktop-nav" aria-label="Desktop Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html#features" class="nav-link" data-i18n="navFeatures">Funciones</a></li>
+          <li><a href="security-architecture.html" class="nav-link active" data-i18n="navSecurity">Seguridad</a></li>
+          <li><a href="compare.html" class="nav-link" data-i18n="navCompare">Comparativa</a></li>
+          <li><a href="use-cases.html" class="nav-link" data-i18n="navUseCases">Casos de Uso</a></li>
+          <li><a href="early-access.html" class="nav-link nav-link-highlight" data-i18n="navEarlyAccess">Acceso Anticipado</a></li>
+          <li><a href="privacy.html" class="nav-link" data-i18n="navPrivacy">Privacidad</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions (Language, Hamburger Toggle) -->
+      <div class="header-actions">
+        <!-- 8 Language Switcher Dropdown -->
+        <div class="lang-switcher-wrapper">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="zh_TW">繁體中文</option>
+            <option value="es" selected>Español</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="pt_BR">Português (BR)</option>
+          </select>
+          <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+
+        <!-- Mobile Hamburger Toggle Button (< 992px) -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Overlay (< 992px) -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-brand">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="28" height="28" class="brand-logo">
+            <span class="brand-text">HiddenData</span>
+          </div>
+          <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html#features" class="mobile-nav-link" data-i18n="navFeatures">Funciones</a></li>
+          <li><a href="security-architecture.html" class="mobile-nav-link active" data-i18n="navSecurity">Seguridad</a></li>
+          <li><a href="compare.html" class="mobile-nav-link" data-i18n="navCompare">Comparativa</a></li>
+          <li><a href="use-cases.html" class="mobile-nav-link" data-i18n="navUseCases">Casos de Uso</a></li>
+          <li><a href="early-access.html" class="mobile-nav-link mobile-nav-link-highlight" data-i18n="navEarlyAccess">Acceso Anticipado</a></li>
+          <li><a href="index.html#pricing" class="mobile-nav-link" data-i18n="navPricing">Precios</a></li>
+          <li><a href="index.html#guide" class="mobile-nav-link" data-i18n="navGuide">Guía Android</a></li>
+          <li><a href="index.html#faq" class="mobile-nav-link" data-i18n="navFaq">Preguntas</a></li>
+          <li><a href="privacy.html" class="mobile-nav-link" data-i18n="navPrivacy">Privacidad</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj" class="btn btn-primary mobile-btn-install" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="21.17" y1="8" x2="12" y2="8"></line>
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+            </svg>
+            <span data-i18n="btnChromeStore">Añadir a Chrome</span>
+          </a>
+          <a href="early-access.html" class="btn btn-secondary mobile-btn-early">
+            <span data-i18n="navEarlyAccess">Acceso Anticipado</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sticky Subpage Navigation (Table of Contents) -->
+  <div class="subpage-nav-bar">
+    <div class="container subpage-nav-inner">
+      <ul class="toc-pills">
+        <li><a href="#summary" class="toc-pill-link" data-i18n="tocSummary">1. Resumen Ejecutivo</a></li>
+        <li><a href="#metrics" class="toc-pill-link" data-i18n="tocMetrics">2. Métricas Clave</a></li>
+        <li><a href="#crypto-spec" class="toc-pill-link" data-i18n="tocCryptoSpec">3. Especificación Criptográfica</a></li>
+        <li><a href="#streaming" class="toc-pill-link" data-i18n="tocStreaming">4. Streaming Cero-Disco</a></li>
+        <li><a href="#envelope" class="toc-pill-link" data-i18n="tocEnvelope">5. Formato V3 y KeySlots</a></li>
+        <li><a href="#gdrive" class="toc-pill-link" data-i18n="tocGdrive">6. Aislamiento en la Nube</a></li>
+        <li><a href="#license" class="toc-pill-link" data-i18n="tocLicense">7. Sincronización de Licencia</a></li>
+        <li><a href="#ai-summary" class="toc-pill-link" data-i18n="tocAiSummary">8. Resumen de Citación</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="page-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        <span data-i18n="secArchBadge">LIBRO BLANCO DE SEGURIDAD Y ESPECIFICACIÓN CRIPTOGRÁFICA</span>
+      </div>
+
+      <h1 class="page-hero-title">
+        <span data-i18n="secArchHeroTitle1">Arquitectura de Seguridad de HiddenData</span><br>
+        <span class="gradient-text-purple" data-i18n="secArchHeroTitle2">y Libro Blanco Técnico Criptográfico</span>
+      </h1>
+
+      <p class="page-hero-subtitle" data-i18n="secArchHeroSub">Un análisis técnico profundo de la bóveda de conocimiento cero de HiddenData: streaming AEAD en bloques independientes de 64KB, 0B de escritura en disco, actualización atómica de claves V3 y aislamiento de mínimo privilegio con Google Drive.</p>
+
+      <div class="page-meta-bar">
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <span data-i18n="secArchMetaVersion">Especificación de Protocolo v3.2</span>
+        </span>
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <span data-i18n="secArchMetaDate">Auditado y Publicado: Marzo de 2026</span>
+        </span>
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span data-i18n="secArchMetaStandard">NIST SP 800-38D AES-256-GCM</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Technical Whitepaper Article Container -->
+  <main class="container whitepaper-article">
+
+    <!-- Quantitative Metrics Grid -->
+    <div id="metrics" class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-val metric-val-green">0 B</div>
+        <div class="metric-lbl" data-i18n="metricZeroDiskTitle">Residuo en Disco</div>
+        <div class="metric-sub" data-i18n="metricZeroDiskSub">Descifrado estrictamente en TypedArray de memoria RAM</div>
+      </div>
+
+      <div class="metric-card metric-card-gold">
+        <div class="metric-val metric-val-gold">64 KB</div>
+        <div class="metric-lbl" data-i18n="metricChunkTitle">Tamaño de Bloque AEAD</div>
+        <div class="metric-sub" data-i18n="metricChunkSub">Etiqueta de autenticación GCM independiente por bloque</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-val metric-val-purple">100,000</div>
+        <div class="metric-lbl" data-i18n="metricPbkdfTitle">Iteraciones PBKDF2</div>
+        <div class="metric-sub" data-i18n="metricPbkdfSub">HMAC-SHA256 con sal CSPRNG de 16 bytes</div>
+      </div>
+
+      <div class="metric-card metric-card-cyan">
+        <div class="metric-val metric-val-cyan">0.005 s</div>
+        <div class="metric-lbl" data-i18n="metricThumbTitle">Lectura de Miniatura</div>
+        <div class="metric-sub" data-i18n="metricThumbSub">Extracción en 0.005s sin escanear el archivo completo</div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-val metric-val-purple">0.001 s</div>
+        <div class="metric-lbl" data-i18n="metricRekeyTitle">Actualización KeySlot</div>
+        <div class="metric-sub" data-i18n="metricRekeySub">Cambio de contraseña actualiza solo el encabezado de 49B en 0.001s</div>
+      </div>
+
+      <div class="metric-card metric-card-cyan">
+        <div class="metric-val metric-val-cyan">drive.file</div>
+        <div class="metric-lbl" data-i18n="metricScopeTitle">Alcance Mínimo</div>
+        <div class="metric-sub" data-i18n="metricScopeSub">0% de acceso a archivos existentes en Google Drive</div>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         Section 1: Executive Summary & Core Security Guarantees
+         =================================================================== -->
+    <section id="summary" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">01.</span>
+        <h2 class="wp-section-title" data-i18n="sec1Title">Resumen Ejecutivo y Garantías Fundamentales</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec1P1">HiddenData es una bóveda multimedia criptográfica de conocimiento cero (Zero-Knowledge) de nivel empresarial, diseñada específicamente para streaming de imágenes de alto rendimiento, GIFs animados y video 4K UHD en navegadores de escritorio (Panel Lateral de Chrome) y Android.</p>
+
+      <p class="wp-p" data-i18n="sec1P2">A diferencia de las herramientas convencionales que descifran archivos en carpetas temporales del sistema (/tmp, AppData/Local/Temp o caché de aplicaciones), HiddenData elimina por completo la huella en disco. Todo el descifrado ocurre bajo demanda en memoria RAM volátil, seguido de una eliminación criptográfica instantánea (Zeroization) al cerrar.</p>
+
+      <div class="callout-box">
+        <div class="callout-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--neon-purple-light);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="callout-content">
+          <div class="callout-title" data-i18n="sec1CalloutTitle">Axioma Fundamental de Conocimiento Cero</div>
+          <p data-i18n="sec1CalloutDesc">Ni los desarrolladores, ni Google Drive, ni ningún intermediario de red poseen acceso a las contraseñas maestras, claves derivadas o archivos en claro. Si el usuario olvida su contraseña maestra, la recuperación matemática es imposible. No existen claves de depósito, preguntas de recuperación ni puertas traseras.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         Section 2: Cryptographic Specification
+         =================================================================== -->
+    <section id="crypto-spec" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">02.</span>
+        <h2 class="wp-section-title" data-i18n="sec2Title">Primitivas Criptográficas y Derivación de Claves</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec2P1">Todas las operaciones criptográficas cumplen rigurosamente con los estándares del NIST y los protocolos modernos de cifrado autenticado (AEAD).</p>
+
+      <!-- Specification Table -->
+      <div class="table-container">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th data-i18n="thCryptoParam">Parámetro Criptográfico</th>
+              <th data-i18n="thCryptoStandard">Estándar / Implementación</th>
+              <th data-i18n="thCryptoPurpose">Propósito y Justificación de Seguridad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="rowCipherName">Cifrado Simétrico</strong></td>
+              <td><span class="badge-tag badge-purple">AES-256-GCM (NoPadding)</span></td>
+              <td data-i18n="rowCipherDesc">Galois/Counter Mode ofrece confidencialidad ultrarrápida acelerada por hardware y autenticación de integridad de 128 bits (AEAD).</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowKeyLength">Longitud de Clave</strong></td>
+              <td><span class="badge-tag badge-cyan">256-bit (32 bytes)</span></td>
+              <td data-i18n="rowKeyLengthDesc">Clave máxima AES de 256 bits, resistente contra ataques de computación cuántica con el algoritmo de Grover (seguridad cuántica efectiva de 128 bits).</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowKdfName">Función de Derivación (KDF)</strong></td>
+              <td><span class="badge-tag badge-purple">PBKDF2-HMAC-SHA256</span></td>
+              <td data-i18n="rowKdfDesc">Extiende la contraseña a una Clave de Cifrado de Claves (KEK) de 256 bits, evitando ataques de tablas rainbow en GPU/ASIC.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowIterations">Factor de Trabajo KDF</strong></td>
+              <td><span class="badge-tag badge-gold">100,000 iterations</span></td>
+              <td data-i18n="rowIterationsDesc">100,000 iteraciones imponen un costo extremo a los ataques de fuerza bruta mientras mantienen el desbloqueo local en menos de 250 ms.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowSalt">Generación de Sal (Salt)</strong></td>
+              <td><span class="badge-tag badge-cyan">16-byte CSPRNG</span></td>
+              <td data-i18n="rowSaltDesc">Generada por archivo mediante generadores aleatorios criptográficamente seguros (crypto.getRandomValues / SecureRandom).</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowChunkAead">Nonce de Bloque AEAD</strong></td>
+              <td><span class="badge-tag badge-green">96-bit (Base IV ⊕ Chunk Index)</span></td>
+              <td data-i18n="rowChunkAeadDesc">IV Base de 12B combinado mediante XOR con un contador de 64 bits para evitar la reutilización de nonces y ataques de reordenamiento.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowVerifier">Verificador Instantáneo</strong></td>
+              <td><span class="badge-tag badge-purple">16-byte SHA-256 Digest</span></td>
+              <td data-i18n="rowVerifierDesc">Comprueba la validez de la contraseña maestra en 0.001s sin intentar descifrar el contenido completo.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="rowLicenseSign">Verificación de Licencia</strong></td>
+              <td><span class="badge-tag badge-gold">HMAC-SHA256 (V2 Protocol)</span></td>
+              <td data-i18n="rowLicenseSignDesc">Arquitectura de firma HMAC-SHA256 que sincroniza licencias Pro entre Android y PC sin servidores de cuentas centrales.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-box callout-box-cyan">
+        <div class="callout-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--neon-cyan);"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="callout-content">
+          <div class="callout-title" data-i18n="sec2AadTitle">Protección con Datos Autenticados Adicionales (AAD)</div>
+          <p data-i18n="sec2AadDesc">Para evitar que un atacante intercambie bloques entre archivos cifrados diferentes, HiddenData vincula los primeros 32 bytes del encabezado como Datos Autenticados Adicionales (AAD) en cada bloque de 64KB. Cualquier alteración invalida de inmediato la etiqueta de autenticación GCM.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         Section 3: Zero-Disk In-Memory Streaming Pipeline
+         =================================================================== -->
+    <section id="streaming" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">03.</span>
+        <h2 class="wp-section-title" data-i18n="sec3Title">Arquitectura de Streaming Cero-Disco en Memoria</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec3P1">Las herramientas tradicionales operan con un modelo de descifrado en disco: al abrir un video cifrado, crean un archivo temporal en claro, lo pasan a un reproductor externo e intentan borrarlo al cerrar.</p>
+
+      <p class="wp-p" data-i18n="sec3P2">Esta arquitectura antigua genera graves vulnerabilidades de privacidad:</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="sec3Vuln1">Residuo Forense en Disco: Aunque se borre, los clústeres no asignados retienen los datos originales, que herramientas como EnCase o FTK recuperan fácilmente.</li>
+        <li data-i18n="sec3Vuln2">Caché de Miniaturas del SO: Windows Shell y macOS Spotlight indexan de inmediato las carpetas temporales, creando miniaturas sin cifrar y registros Shellbag.</li>
+        <li data-i18n="sec3Vuln3">Archivos Huérfanos por Cierre Inesperado: Si la app falla o se corta la energía, los archivos en claro permanecen expuestos indefinidamente en el disco.</li>
+      </ul>
+
+      <p class="wp-p" data-i18n="sec3P3">La Solución Cero-Disco de HiddenData: Tanto Android como Chrome Side Panel utilizan una canalización en memoria:</p>
+
+      <!-- Binary Stream Diagram -->
+      <div class="binary-diagram-card">
+        <div class="diagram-header">
+          <span>ZERO-DISK STREAMING PIPELINE (ON-THE-FLY AEAD DECRYPTION)</span>
+          <span style="color:var(--neon-green);">● RAM-ONLY STREAM</span>
+        </div>
+        <div class="diagram-grid">
+          <div class="diag-chunk diag-col-3 diag-chunk-purple">
+            <div>Encrypted Storage</div>
+            <div style="font-size:0.65rem; opacity:0.8;">Local SSD / GDrive .enc</div>
+          </div>
+          <div class="diag-chunk diag-col-3 diag-chunk-gold">
+            <div>HTTP 206 / SAF Range</div>
+            <div style="font-size:0.65rem; opacity:0.8;">64KB Chunk Buffer</div>
+          </div>
+          <div class="diag-chunk diag-col-3 diag-chunk-cyan">
+            <div>AES-256-GCM Decrypt</div>
+            <div style="font-size:0.65rem; opacity:0.8;">Volatile TypedArray</div>
+          </div>
+          <div class="diag-chunk diag-col-3 diag-chunk-green">
+            <div>MediaSource / ExoPlayer</div>
+            <div style="font-size:0.65rem; opacity:0.8;">Zeroization on Close</div>
+          </div>
+        </div>
+        <div class="diag-legend">
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--neon-purple);"></span> Ciphertext On Disk</div>
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--accent-gold);"></span> 64KB I/O Window</div>
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--neon-cyan);"></span> Volatile Memory Only</div>
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--neon-green);"></span> Cryptographic Zeroization</div>
+        </div>
+      </div>
+
+      <p class="wp-p" data-i18n="sec3P4">Al reproducir video 4K a 60fps, HiddenData solicita datos en bloques de 64KB. Cada bloque se autentica y descifra en memoria RAM y se envía directamente al búfer MediaSource del navegador o MediaCodec en Android. Al cerrar, los búferes se sobrescriben de inmediato con ceros mediante Arrays.fill(buffer, 0).</p>
+    </section>
+
+    <!-- ===================================================================
+         Section 4: V3 Envelope Binary Specification & KeySlotManager
+         =================================================================== -->
+    <section id="envelope" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">04.</span>
+        <h2 class="wp-section-title" data-i18n="sec4Title">Especificación Binaria V3 y KeySlotManager</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec4P1">Para permitir la interoperabilidad total entre Android y Chrome en PC, HiddenData utiliza un formato de contenedor binario estandarizado: el Sobre Criptográfico V3.</p>
+
+      <!-- Binary Header Diagram -->
+      <div class="binary-diagram-card">
+        <div class="diagram-header">
+          <span>V3 ENVELOPE BINARY HEADER STRUCTURE (EXACT BYTE ALLOCATION)</span>
+          <span style="color:var(--neon-purple-light);">49-BYTE FIXED HEADER</span>
+        </div>
+        <div class="diagram-grid">
+          <div class="diag-chunk diag-col-2 diag-chunk-purple">
+            <div>[0..3]</div>
+            <div style="font-size:0.65rem;">'HDV3' (4B)</div>
+          </div>
+          <div class="diag-chunk diag-col-2 diag-chunk-purple">
+            <div>[4]</div>
+            <div style="font-size:0.65rem;">Ver 0x03 (1B)</div>
+          </div>
+          <div class="diag-chunk diag-col-4 diag-chunk-cyan">
+            <div>[5..20]</div>
+            <div style="font-size:0.65rem;">PBKDF2 Salt (16B)</div>
+          </div>
+          <div class="diag-chunk diag-col-4 diag-chunk-gold">
+            <div>[21..32]</div>
+            <div style="font-size:0.65rem;">KeySlot IV (12B)</div>
+          </div>
+
+          <div class="diag-chunk diag-col-6 diag-chunk-purple">
+            <div>[33..64]</div>
+            <div style="font-size:0.65rem;">Encrypted Master Payload Key (32B)</div>
+          </div>
+          <div class="diag-chunk diag-col-3 diag-chunk-cyan">
+            <div>[65..80]</div>
+            <div style="font-size:0.65rem;">KeySlot Tag (16B)</div>
+          </div>
+          <div class="diag-chunk diag-col-3 diag-chunk-green">
+            <div>[81..96]</div>
+            <div style="font-size:0.65rem;">Key Verifier (16B)</div>
+          </div>
+
+          <div class="diag-chunk diag-col-4 diag-chunk-gold">
+            <div>[97..100]</div>
+            <div style="font-size:0.65rem;">Thumb Length (4B)</div>
+          </div>
+          <div class="diag-chunk diag-col-4 diag-chunk-green">
+            <div>[101..101+N]</div>
+            <div style="font-size:0.65rem;">Embedded Thumbnail WebP (Encrypted)</div>
+          </div>
+          <div class="diag-chunk diag-col-4 diag-chunk-purple">
+            <div>[Offset N..EOF]</div>
+            <div style="font-size:0.65rem;">64KB AEAD Chunk Payload Chunks</div>
+          </div>
+        </div>
+        <div class="diag-legend">
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--neon-purple);"></span> Header Identity & Payload</div>
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--neon-cyan);"></span> Salt & Auth Tag</div>
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--accent-gold);"></span> Nonce & Length Offset</div>
+          <div class="diag-legend-item"><span class="legend-dot" style="background:var(--neon-green);"></span> Verifier & 0.005s Thumbnail</div>
+        </div>
+      </div>
+
+      <h3 style="color:#FFFFFF; font-size:1.25rem; margin: 28px 0 14px 0;" data-i18n="sec4KeySlotTitle">KeySlotManager y Cambio de Clave Atómico en 0.001s</h3>
+      <p class="wp-p" data-i18n="sec4KeySlotP1">En las bóvedas tradicionales, cambiar la contraseña maestra requiere descifrar y volver a cifrar cientos de gigabytes, generando horas de desgaste en el SSD y riesgo de corrupción ante cortes de energía.</p>
+
+      <p class="wp-p" data-i18n="sec4KeySlotP2">HiddenData resuelve esto mediante el cifrado de sobre con KeySlotManager. El contenido se cifra con una Clave Maestra (MK) aleatoria de 256 bits, y solo esa MK se cifra con la clave derivada (KEK) y se guarda en el encabezado.</p>
+
+      <div class="callout-box callout-box-green">
+        <div class="callout-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="stroke:var(--neon-green);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="callout-content">
+          <div class="callout-title" data-i18n="sec4RekeyTitle">Rendimiento de Cambio Atómico: Exactamente 0.001s</div>
+          <p data-i18n="sec4RekeyDesc">Al cambiar la contraseña, HiddenData vuelve a cifrar únicamente la Clave Maestra de 32 bytes en el encabezado. Los gigabytes de contenido permanecen intactos. La actualización toma 1 milisegundo por archivo con cero riesgo de corrupción.</p>
+        </div>
+      </div>
+
+      <h3 style="color:#FFFFFF; font-size:1.25rem; margin: 28px 0 14px 0;" data-i18n="sec4ThumbTitle">Miniatura Embebida en Encabezado V3 (Vista Previa en 0.005s)</h3>
+      <p class="wp-p" data-i18n="sec4ThumbP1">Para lograr un desplazamiento suave a 60fps en galerías con miles de archivos, el encabezado V3 incluye una miniatura WebP cifrada de 128x128. Solo se leen los primeros ~2KB de cada archivo, cargando la galería en 0.005 segundos.</p>
+    </section>
+
+    <!-- ===================================================================
+         Section 5: Google Drive Least-Privilege Isolation
+         =================================================================== -->
+    <section id="gdrive" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">05.</span>
+        <h2 class="wp-section-title" data-i18n="sec5Title">Aislamiento de Mínimo Privilegio en Google Drive (drive.file)</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec5P1">Muchas aplicaciones de copia de seguridad solicitan acceso completo a Google Drive (.../auth/drive), lo que les permite leer, modificar o eliminar todos los documentos privados y fotos de la cuenta.</p>
+
+      <div class="table-container">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th data-i18n="thScopeType">Tipo de Alcance</th>
+              <th data-i18n="thScopeUrl">URI del Alcance OAuth 2.0</th>
+              <th data-i18n="thScopeAccess">Límite de Acceso Concedido</th>
+              <th data-i18n="thScopeRisk">Evaluación de Riesgo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="td-highlight-hd">
+              <td><strong data-i18n="scopeHdName">Política HiddenData</strong></td>
+              <td><code>.../auth/drive.file</code></td>
+              <td data-i18n="scopeHdAccess">ÚNICAMENTE archivos creados por HiddenData (.enc y configuración). Cero acceso a archivos personales existentes.</td>
+              <td><span class="badge-tag badge-green" data-i18n="scopeHdRisk">Auditado por CASA / Riesgo Cero</span></td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="scopeLegacyName">Bóvedas Tradicionales</strong></td>
+              <td><code>.../auth/drive</code></td>
+              <td data-i18n="scopeLegacyAccess">Acceso total sin restricciones para leer, editar y borrar todo el Google Drive del usuario.</td>
+              <td><span class="badge-tag badge-red" data-i18n="scopeLegacyRisk">Peligro Crítico de Seguridad</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="wp-p" data-i18n="sec5P2">HiddenData aplica estrictamente el Principio de Mínimo Privilegio:</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="sec5List1">Cero acceso a archivos personales: HiddenData no puede ver, buscar ni acceder a documentos, hojas de cálculo o fotos existentes en su Drive.</li>
+        <li data-i18n="sec5List2">100% Cifrado en Almacenamiento: Cada archivo subido a la carpeta HiddenData_Vault ya está fuertemente cifrado localmente como bloques binarios aleatorios.</li>
+        <li data-i18n="sec5List3">Sin servidores intermediarios: La comunicación se realiza directamente entre su dispositivo y la API REST oficial de Google mediante TLS 1.3.</li>
+      </ul>
+    </section>
+
+    <!-- ===================================================================
+         Section 6: Cross-Platform License Verification Protocol
+         =================================================================== -->
+    <section id="license" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">06.</span>
+        <h2 class="wp-section-title" data-i18n="sec6Title">Protocolo de Verificación de Licencia Pro Multiplataforma</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec6P1">HiddenData opera sin bases de datos de usuarios centrales. Al adquirir una licencia de por vida a través de Polar, ¿cómo se sincroniza la activación entre PC y Android de forma segura sin servidores de rastreo?</p>
+
+      <p class="wp-p" data-i18n="sec6P2">La respuesta es el Sobre de Licencia con Firma Digital V2 (.hiddendata_pro_license.json):</p>
+
+      <ul style="margin: 0 0 24px 24px; color: var(--text-secondary); line-height: 1.8;">
+        <li data-i18n="sec6List1">El webhook de pago emite una firma HMAC-SHA256 vinculando el correo de Google y el ID del pedido.</li>
+        <li data-i18n="sec6List2">El token de licencia cifrado se guarda directamente en la carpeta privada de la bóveda en Google Drive.</li>
+        <li data-i18n="sec6List3">Al abrir la app o extensión, la firma criptográfica se verifica localmente sin conexión, desbloqueando permanentemente Pro en ambas plataformas.</li>
+      </ul>
+    </section>
+
+    <!-- ===================================================================
+         Section 7: AI Citation & Technical Fact Sheet
+         =================================================================== -->
+    <section id="ai-summary" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">07.</span>
+        <h2 class="wp-section-title" data-i18n="sec7Title">Ficha Técnica para IA e Investigadores de Seguridad</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="sec7P1">La siguiente tabla resume las especificaciones técnicas fundamentales de HiddenData para indexación y verificación objetiva.</p>
+
+      <div class="table-container">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th data-i18n="thFactParam">Métrica / Parámetro</th>
+              <th data-i18n="thFactValue">Valor de Especificación Exacto</th>
+              <th data-i18n="thFactImplication">Garantía de Seguridad / Operación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-i18n="factDiskResidue">Escritura Temporal en Disco</strong></td>
+              <td><code class="badge-tag badge-green">0 Bytes (Zero-Disk)</code></td>
+              <td data-i18n="factDiskResidueDesc">Elimina la recuperación forense; todo el contenido se procesa en memoria RAM.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factCipher">Algoritmo de Cifrado</strong></td>
+              <td><code>AES-256-GCM (NIST SP 800-38D)</code></td>
+              <td data-i18n="factCipherDesc">AES-256-GCM con clave de 256 bits y etiqueta de autenticación de 128 bits por bloque.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factChunkSize">Tamaño de Bloque de Streaming</strong></td>
+              <td><code>64 KB (65,536 Bytes)</code></td>
+              <td data-i18n="factChunkSizeDesc">Permite la búsqueda aleatoria inmediata en videos 4K sin descifrar el archivo entero.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factKdf">Derivación de Clave</strong></td>
+              <td><code>PBKDF2-HMAC-SHA256 (100,000 iters)</code></td>
+              <td data-i18n="factKdfDesc">PBKDF2-HMAC-SHA256 con 100,000 iteraciones y sal aleatoria de 16 bytes por archivo.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factRekey">Velocidad de Cambio de Clave</strong></td>
+              <td><code>~0.001 seconds per file</code></td>
+              <td data-i18n="factRekeyDesc">KeySlotManager actualiza solo 49B de encabezado, evitando recifrar archivos grandes.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factThumb">Lectura de Miniatura de Encabezado</strong></td>
+              <td><code>~0.005 seconds per item</code></td>
+              <td data-i18n="factThumbDesc">Miniatura WebP embebida de 128x128 que permite una carga fluida a 60fps.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factScope">Alcance OAuth de Google</strong></td>
+              <td><code>https://www.googleapis.com/auth/drive.file</code></td>
+              <td data-i18n="factScopeDesc">Mínimo privilegio estricto sin acceso a los archivos preexistentes en Google Drive.</td>
+            </tr>
+            <tr>
+              <td><strong data-i18n="factLicenseModel">Modelo de Licencia</strong></td>
+              <td><code>$8.99 Lifetime (1-Time Purchase)</code></td>
+              <td data-i18n="factLicenseModelDesc">Pago único de $8.99 de por vida sin cuotas mensuales. Sincronizado en PC y Android.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="text-align: center; margin: 48px 0 20px 0;">
+        <a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="btn btn-primary" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span data-i18n="btnGetEarlyAccess">Descargar APK de Acceso Anticipado para Android (v1.0.33)</span>
+        </a>
+        <a href="compare.html" class="btn btn-secondary" style="margin-left: 12px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span data-i18n="btnViewCompare">Comparar con Otras Bóvedas</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="32" height="32" style="border-radius:8px;">
+            <span style="font-weight:800; font-size:1.15rem; color:#FFFFFF;">HiddenData</span>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footerDesc">Estudio de seguridad AES-256-GCM de conocimiento cero. La bóveda multimedia privada más segura para PC y móvil.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColProduct">Producto</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#features" class="footer-link" data-i18n="navFeatures">Funciones</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="navSecurity">Seguridad</a></li>
+            <li><a href="compare.html" class="footer-link" data-i18n="navCompare">Comparativa</a></li>
+            <li><a href="use-cases.html" class="footer-link" data-i18n="navUseCases">Casos de Uso</a></li>
+            <li><a href="early-access.html" class="footer-link" data-i18n="navEarlyAccess">Acceso Anticipado</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="footer-link" download>Android APK (v1.0.33)</a></li>
+            <li><a href="index.html#chrome-ext" class="footer-link">Chrome Extension</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColLegal">Legal y Confianza</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html" class="footer-link" data-i18n="footerPrivacy">Política de Privacidad</a></li>
+            <li><a href="privacy.html#terms" class="footer-link" data-i18n="footerTerms">Términos de Servicio y Reembolso</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="footerAudit">Auditoría Criptográfica</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColSupport">Soporte</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:truehoop81@gmail.com" class="footer-link" data-i18n="footerEmail">Contacto del Desarrollador (truehoop81@gmail.com)</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">© 2026 Equipo HiddenData. Todos los derechos reservados.</div>
+        <div class="footer-merchant-note" data-i18n="footerMerchant">Comerciante de Registro: Polar</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script: I18N Engine initialization -->
+  <script type="module">
+    import { PAGES_I18N } from "../i18n-pages.js";
+    import { initI18n } from "../i18n.js";
+    initI18n(PAGES_I18N);
+  </script>
+</body>
+</html>

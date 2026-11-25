@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T899BVJP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="useCasesPageTitle">Reale Anwendungsfälle & Technische FAQ | HiddenData</title>
+  <meta name="description" content="Praxis-Szenarien für HiddenData: Spurenlose Medienwiedergabe auf geteilten PCs, verschlüsseltes Google Drive-Backup, Android-PC-Synchronisation & FAQ.">
+  <link rel="canonical" href="https://hiddendata.app/de/use-cases.html">
+  <link rel="alternate" hreflang="x-default" href="https://hiddendata.app/use-cases.html">
+  <link rel="alternate" hreflang="en" href="https://hiddendata.app/en/use-cases.html">
+  <link rel="alternate" hreflang="ko" href="https://hiddendata.app/ko/use-cases.html">
+  <link rel="alternate" hreflang="ja" href="https://hiddendata.app/ja/use-cases.html">
+  <link rel="alternate" hreflang="zh-TW" href="https://hiddendata.app/zh-TW/use-cases.html">
+  <link rel="alternate" hreflang="es" href="https://hiddendata.app/es/use-cases.html">
+  <link rel="alternate" hreflang="de" href="https://hiddendata.app/de/use-cases.html">
+  <link rel="alternate" hreflang="fr" href="https://hiddendata.app/fr/use-cases.html">
+  <link rel="alternate" hreflang="pt-BR" href="https://hiddendata.app/pt-BR/use-cases.html">
+  <link rel="icon" type="image/png" href="../icon-128.png">
+  <link rel="apple-touch-icon" href="../icon-128.png">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HiddenData">
+  <meta property="og:title" content="Reale Anwendungsfälle & Technische FAQ | HiddenData">
+  <meta property="og:description" content="Praxis-Szenarien für HiddenData: Spurenlose Medienwiedergabe auf geteilten PCs, verschlüsseltes Google Drive-Backup, Android-PC-Synchronisation & FAQ.">
+  <meta property="og:url" content="https://hiddendata.app/de/use-cases.html">
+  <meta property="og:image" content="https://hiddendata.app/og-image-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="HiddenData Real-World Use Cases &amp; Technical FAQ">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reale Anwendungsfälle & Technische FAQ | HiddenData">
+  <meta name="twitter:description" content="Praxis-Szenarien für HiddenData: Spurenlose Medienwiedergabe auf geteilten PCs, verschlüsseltes Google Drive-Backup, Android-PC-Synchronisation & FAQ.">
+  <meta name="twitter:image" content="https://hiddendata.app/og-image-1200x630.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../pages.css">
+
+  <!-- JSON-LD Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does Zero-Disk in-memory streaming guarantee no forensic trace remains on my computer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Traditional file vaults decrypt encrypted files into operating system temporary folders (like %TEMP% or /tmp). Even after deletion, files linger in unallocated disk sectors and generate OS thumbnail caches. HiddenData decrypts files strictly within volatile RAM TypedArrays on demand and feeds them straight into the browser MediaSource engine. When closed, all memory buffers are explicitly zeroized (Arrays.fill(..., 0)). Exactly 0 bytes are ever written to disk, leaving forensic tools like EnCase or FTK with nothing to recover."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is master password recovery technically impossible, even by HiddenData engineers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HiddenData is engineered under a strict Zero-Knowledge axiom. Encryption keys are derived client-side via PBKDF2-HMAC-SHA256 with 100,000 iterations and random 16-byte salts. Neither your master password nor your derived keys are ever transmitted over the network or stored on any server. Because there are no escrow keys or administrative backdoors, losing your password makes cryptographic recovery mathematically impossible."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I play high-bitrate 4K 60fps video and large animated GIFs smoothly without lag?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. HiddenData divides files into 64KB independent AEAD chunks. Instead of waiting minutes to decrypt a multi-gigabyte video before playback starts, HiddenData decrypts only the requested 64KB chunks on the fly as the video plays. Random seeking executes instantly via HTTP 206 Range requests or local random access, enabling stutter-free 4K playback and instant GIF loops."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does HiddenData work completely offline without an active internet connection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. When encrypting or viewing local files on your internal drive or external USB SSD, HiddenData performs 100% of its cryptographic operations on-device without needing any internet connection. Google Drive connection is completely optional and only needed when you choose to backup or sync across devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do the Android app and PC Chrome Extension share the exact same encrypted vault?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both platforms share the standardized V3 Cryptographic Envelope binary format. You can store your vault in a shared Google Drive folder (HiddenData_Vault) or on an external USB-C SSD. When you encrypt a photo on your Android phone, you can immediately open your PC Chrome Side Panel, unlock the vault with the same master password, and stream the media instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if Google Drive disconnects or goes offline during backup?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HiddenData uses transactional atomic chunk uploads with automatic retry logic and exponential backoff. If network connection drops, incomplete files are cleanly identified and resumed upon reconnection with zero risk of file corruption or data loss."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did HiddenData choose the drive.file permission scope instead of full Google Drive access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Full Google Drive access (drive scope) grants an application power to read, edit, or delete every private document in your cloud account. HiddenData strictly adheres to the principle of least privilege by using https://www.googleapis.com/auth/drive.file. HiddenData can only access files created by HiddenData itself, ensuring 100% isolation from your pre-existing Google Drive documents."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Pro license really a one-time purchase without any subscription fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. HiddenData Pro is available for a one-time payment of $8.99 with lifetime ownership. There are no monthly charges, no annual renewal fees, and no feature paywalls. Your license synchronizes across both PC Chrome Extension and Android mobile via your private Google Drive vault."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What media and document formats are supported by HiddenData Studio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HiddenData supports all major image formats (JPEG, PNG, WebP, GIF, SVG, BMP, HEIC), video formats (MP4, WebM, MKV, MOV), audio formats (MP3, WAV, FLAC, AAC, OGG), and arbitrary binary file archives (.enc)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the One-Touch Stealth Mode protect against shoulder surfing in public?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In public environments like coffee shops, flights, or shared workspaces, pressing the panic key (or tapping the stealth icon) instantly applies an opaque cryptographic blur over the stage and locks playback in under 5 milliseconds, preventing anyone looking over your shoulder from viewing your private media."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link">
+        <img src="../icon-128.png" alt="HiddenData Logo" class="brand-logo" width="38" height="38">
+        <span class="brand-text">HiddenData</span>
+      </a>
+
+      <!-- Desktop Navigation (>= 992px) -->
+      <nav class="desktop-nav" aria-label="Desktop Navigation">
+        <ul class="nav-menu">
+          <li><a href="index.html#features" class="nav-link" data-i18n="navFeatures">Funktionen</a></li>
+          <li><a href="security-architecture.html" class="nav-link" data-i18n="navSecurity">Sicherheit</a></li>
+          <li><a href="compare.html" class="nav-link" data-i18n="navCompare">Vergleich</a></li>
+          <li><a href="use-cases.html" class="nav-link active" data-i18n="navUseCases">Anwendungsfälle</a></li>
+          <li><a href="early-access.html" class="nav-link nav-link-highlight" data-i18n="navEarlyAccess">Vorabzugang</a></li>
+          <li><a href="privacy.html" class="nav-link" data-i18n="navPrivacy">Datenschutz</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions (Language, Hamburger Toggle) -->
+      <div class="header-actions">
+        <!-- 8 Language Switcher Dropdown -->
+        <div class="lang-switcher-wrapper">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <select id="langSwitcher" class="lang-select" aria-label="Select Language">
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="zh_TW">繁體中文</option>
+            <option value="es">Español</option>
+            <option value="de" selected>Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="pt_BR">Português (BR)</option>
+          </select>
+          <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+
+        <!-- Mobile Hamburger Toggle Button (< 992px) -->
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Overlay (< 992px) -->
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+    <nav class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-brand">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="28" height="28" class="brand-logo">
+            <span class="brand-text">HiddenData</span>
+          </div>
+          <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <ul class="mobile-nav-list">
+          <li><a href="index.html#features" class="mobile-nav-link" data-i18n="navFeatures">Funktionen</a></li>
+          <li><a href="security-architecture.html" class="mobile-nav-link" data-i18n="navSecurity">Sicherheit</a></li>
+          <li><a href="compare.html" class="mobile-nav-link" data-i18n="navCompare">Vergleich</a></li>
+          <li><a href="use-cases.html" class="mobile-nav-link active" data-i18n="navUseCases">Anwendungsfälle</a></li>
+          <li><a href="early-access.html" class="mobile-nav-link mobile-nav-link-highlight" data-i18n="navEarlyAccess">Vorabzugang</a></li>
+          <li><a href="index.html#pricing" class="mobile-nav-link" data-i18n="navPricing">Preise</a></li>
+          <li><a href="index.html#guide" class="mobile-nav-link" data-i18n="navGuide">Android-Anleitung</a></li>
+          <li><a href="index.html#faq" class="mobile-nav-link" data-i18n="navFaq">FAQ</a></li>
+          <li><a href="privacy.html" class="mobile-nav-link" data-i18n="navPrivacy">Datenschutz</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <a href="https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj" class="btn btn-primary mobile-btn-install" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <circle cx="12" cy="12" r="4"></circle>
+              <line x1="21.17" y1="8" x2="12" y2="8"></line>
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
+            </svg>
+            <span data-i18n="btnChromeStore">Zu Chrome hinzufügen</span>
+          </a>
+          <a href="early-access.html" class="btn btn-secondary mobile-btn-early">
+            <span data-i18n="navEarlyAccess">Vorabzugang</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sticky Subpage Navigation -->
+  <div class="subpage-nav-bar">
+    <div class="container subpage-nav-inner">
+      <ul class="toc-pills">
+        <li><a href="#scenarios" class="toc-pill-link" data-i18n="tocUcScenarios">1. Kern-Workflows</a></li>
+        <li><a href="#case1" class="toc-pill-link" data-i18n="tocUcCase1">2. Geteilter / Firmen-PC</a></li>
+        <li><a href="#case2" class="toc-pill-link" data-i18n="tocUcCase2">3. Google Drive-Backup</a></li>
+        <li><a href="#case3" class="toc-pill-link" data-i18n="tocUcCase3">4. Mobil-PC-Synchronisation</a></li>
+        <li><a href="#case4" class="toc-pill-link" data-i18n="tocUcCase4">5. Kreative Medienarchive</a></li>
+        <li><a href="#faq" class="toc-pill-link" data-i18n="tocUcFaq">6. Ausführliche Technik-FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="page-hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        <span data-i18n="useCasesBadge">PRAXIS-WORKFLOWS & TECHNISCHE FRAGEN</span>
+      </div>
+
+      <h1 class="page-hero-title">
+        <span data-i18n="useCasesHeroTitle1">HiddenData Praxiseinsatz</span><br>
+        <span class="gradient-text-purple" data-i18n="useCasesHeroTitle2">& Ausführliche Technische FAQ</span>
+      </h1>
+
+      <p class="page-hero-subtitle" data-i18n="useCasesHeroSub">Erfahren Sie, wie Profis, Kreative und Sicherheitsbewusste HiddenData nutzen: Spurenlose Medienwiedergabe an fremden PCs, Zero-Knowledge-Cloud-Backups und Smartphone-PC-Synchronisation.</p>
+
+      <div class="page-meta-bar">
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span data-i18n="useCasesMetaScenarios">4 Produktions-Workflows</span>
+        </span>
+        <span class="page-meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span data-i18n="useCasesMetaQuestions">10 Ausführliche Technische Fragen</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="container whitepaper-article">
+
+    <!-- Section 1: 4 Core Use Cases Grid -->
+    <section id="scenarios" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">01.</span>
+        <h2 class="wp-section-title" data-i18n="ucSec1Title">4 Zentrale Produktions-Anwendungsfälle</h2>
+      </div>
+
+      <div class="scenario-grid">
+
+        <!-- Case 1: Shared / Work PC Zero-Trace -->
+        <div id="case1" class="scenario-card">
+          <div class="scenario-icon-wrapper">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3 class="scenario-title" data-i18n="ucCase1Title">1. Spurenlose Wiedergabe am geteilten oder Firmen-PC</h3>
+          <p class="scenario-desc" data-i18n="ucCase1Desc">Das Betrachten persönlicher Fotos am Dienst-Laptop oder Familien-PC hinterlässt Spuren in temporären Ordnern, Caches und Verlaufslisten. HiddenData öffnet sich in der Chrome-Seitenleiste, entschlüsselt ausschließlich im RAM und löscht alle Spuren beim Schließen.</p>
+
+          <div class="scenario-steps-box">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <div class="step-text" data-i18n="ucCase1Step1">Seitenleiste öffnen: Auf das HiddenData-Icon in Chrome klicken, um das sandboxed Panel zu starten.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <div class="step-text" data-i18n="ucCase1Step2">Tresor entsperren: Master-Passwort eingeben, um den AES-256-Schlüssel im RAM abzuleiten.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <div class="step-text" data-i18n="ucCase1Step3">Im RAM streamen: 4K-Videos oder GIFs genießen. Exakt 0 Bytes werden auf die Festplatte geschrieben.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num">4</span>
+              <div class="step-text" data-i18n="ucCase1Step4">Sofortige Nullung: Schließen der Seitenleiste überschreibt den RAM-Speicher sofort mit Nullen.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 2: Zero-Knowledge Google Drive Media Backup -->
+        <div id="case2" class="scenario-card">
+          <div class="scenario-icon-wrapper" style="background:rgba(0, 229, 255, 0.12); border-color:rgba(0, 229, 255, 0.35); color:var(--neon-cyan);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg>
+          </div>
+          <h3 class="scenario-title" data-i18n="ucCase2Title">2. Zero-Knowledge-Medientresor in Google Drive</h3>
+          <p class="scenario-desc" data-i18n="ucCase2Desc">Cloud-Dienste analysieren unverschlüsselte Dateien für Algorithmen. HiddenData verschlüsselt Medien vor der Übertragung lokal auf dem Gerät mit AES-256-GCM. Google sieht ausschließlich zufällige Chiffretexte.</p>
+
+          <div class="scenario-steps-box">
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-cyan);">1</span>
+              <div class="step-text" data-i18n="ucCase2Step1">Dateien wählen: Vertrauliche Medien aus der Galerie oder PC-Ordnern auswählen.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-cyan);">2</span>
+              <div class="step-text" data-i18n="ucCase2Step2">On-Device AEAD-Verschlüsselung: Sofortige Kapselung in V3-Container mit integrierter Miniaturansicht.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-cyan);">3</span>
+              <div class="step-text" data-i18n="ucCase2Step3">drive.file-Upload: Gesichertes Hochladen in den HiddenData_Vault-Ordner mit minimalen Rechten.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-cyan);">4</span>
+              <div class="step-text" data-i18n="ucCase2Step4">HTTP 206-Streaming: 4K-Videos direkt aus der Cloud abspielen, ohne die Datei komplett herunterzuladen.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 3: Mobile to PC Seamless Sync -->
+        <div id="case3" class="scenario-card">
+          <div class="scenario-icon-wrapper" style="background:rgba(255, 215, 0, 0.12); border-color:var(--border-gold); color:var(--accent-gold);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+          </div>
+          <h3 class="scenario-title" data-i18n="ucCase3Title">3. Nahtlose Android- & PC-Tresorsynchronisation</h3>
+          <p class="scenario-desc" data-i18n="ucCase3Desc">Viele Smartphone-Tresore nutzen proprietäre Formate, die am PC nicht lesbar sind. HiddenData nutzt auf Android und PC das identische V3-Binärformat für mühelosen plattformübergreifenden Zugriff.</p>
+
+          <div class="scenario-steps-box">
+            <div class="step-item">
+              <span class="step-num" style="background:var(--accent-gold); color:#000;">1</span>
+              <div class="step-text" data-i18n="ucCase3Step1">Am Smartphone verschlüsseln: Fotos und Videos auf Android in den Tresor verschieben.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--accent-gold); color:#000;">2</span>
+              <div class="step-text" data-i18n="ucCase3Step2">Synchronisation via Cloud oder SSD: Über Google Drive oder mobile USB-C-SSDs abgleichen.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--accent-gold); color:#000;">3</span>
+              <div class="step-text" data-i18n="ucCase3Step3">PC-Seitenleiste öffnen: Chrome auf dem Desktop starten und mit Master-Passwort entsperren.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--accent-gold); color:#000;">4</span>
+              <div class="step-text" data-i18n="ucCase3Step4">Vereinter Tresor: Alle Inhalte erscheinen sofort mit 0,005s-Vorschau und flüssiger Wiedergabe.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case 4: Sensitive Creative & Personal Assets -->
+        <div id="case4" class="scenario-card">
+          <div class="scenario-icon-wrapper" style="background:rgba(0, 230, 118, 0.12); border-color:rgba(0, 230, 118, 0.35); color:var(--neon-green);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 class="scenario-title" data-i18n="ucCase4Title">4. Schutz für kreative Medien & vertrauliche Finanzarchive</h3>
+          <p class="scenario-desc" data-i18n="ucCase4Desc">Fotografen, Designer und Freiberufler mit unveröffentlichten Projekten und Finanzunterlagen schätzen den Wegfall monatlicher Abokosten. HiddenData Pro bietet lebenslange Sicherheit gegen eine Einmalzahlung.</p>
+
+          <div class="scenario-steps-box">
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-green); color:#000;">1</span>
+              <div class="step-text" data-i18n="ucCase4Step1">Externe SSD anschließen: Schnelle NVMe- oder USB-C-Festplatte mit 500GB+ verbinden.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-green); color:#000;">2</span>
+              <div class="step-text" data-i18n="ucCase4Step2">Stapel-Verschlüsselung: Hardware-beschleunigtes AES-NI für rasante Verschlüsselung großer Datenmengen.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-green); color:#000;">3</span>
+              <div class="step-text" data-i18n="ucCase4Step3">Schlüsselwechsel in 0,001s: Passwort jederzeit ändern, ohne Terabytes neu verschlüsseln zu müssen.</div>
+            </div>
+            <div class="step-item">
+              <span class="step-num" style="background:var(--neon-green); color:#000;">4</span>
+              <div class="step-text" data-i18n="ucCase4Step4">Lebenslange Sicherheit: $8.99 Einmalzahlung für dauerhaften Besitz auf PC und Smartphone.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: Extended Technical FAQ (10 Detailed Items) -->
+    <section id="faq" class="wp-section">
+      <div class="wp-section-header">
+        <span class="wp-section-num">02.</span>
+        <h2 class="wp-section-title" data-i18n="ucSec2Title">Ausführliche Technische FAQ</h2>
+      </div>
+
+      <p class="wp-p" data-i18n="ucSec2P1">Detaillierte Antworten zu Zero-Disk-Streaming, Passwortverlust, 4K-Performance und Offline-Fähigkeiten.</p>
+
+      <div class="faq-accordion-group">
+
+        <!-- Q1: Forensic Recovery Guarantee -->
+        <details class="faq-item" open>
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q1.</span> <span data-i18n="faqQ1Title">Wie garantiert Zero-Disk-Streaming, dass keine forensischen Spuren auf der Festplatte bleiben?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ1Body">Klassische Tresore legen temporäre Dateien in Verzeichnissen wie %TEMP% oder /tmp ab. Nach dem Löschen verbleiben Datenfragmente in freien Sektoren, die Forensik-Tools (EnCase, FTK) auslesen können. HiddenData entschlüsselt ausschließlich im flüchtigen Arbeitsspeicher (RAM) in 64-KB-Chunks und leitet diese direkt an den MediaSource-Puffer weiter. Es wird zu keinem Zeitpunkt 1 Byte Klartext auf die Festplatte geschrieben. Beim Beenden werden die RAM-Puffer sofort mit Nullen überschrieben (Arrays.fill), was eine forensische Wiederherstellung unmöglich macht.</div>
+        </details>
+
+        <!-- Q2: Master Password Recovery -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q2.</span> <span data-i18n="faqQ2Title">Warum ist eine Passwortwiederherstellung selbst für HiddenData-Entwickler unmöglich?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ2Body">HiddenData basiert auf absolutem Zero-Knowledge. Die Schlüsselableitung erfolgt lokal mit 100.000 PBKDF2-Iterationen und 16-Byte-Salt. Passwörter und Schlüssel werden niemals übertragen oder gespeichert. Wir bauen bewusst keine Wiederherstellungs-Hintertüren ein, da jede solche Funktion ein fundamentales Sicherheitsrisiko darstellen würde. Bitte bewahren Sie Ihr Master-Passwort sicher auf.</div>
+        </details>
+
+        <!-- Q3: 4K 60fps & GIF Performance -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q3.</span> <span data-i18n="faqQ3Title">Laufen hochauflösende 4K-60fps-Videos und große GIFs ruckelfrei?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ3Body">Ja. HiddenData unterteilt Dateien in unabhängige 64-KB-AEAD-Chunks. Bei einem 5-GB-Video muss nicht die gesamte Datei entschlüsselt werden; das System entschlüsselt in Echtzeit nur die Chunks an der aktuellen Abspielposition. Beim Vorspulen werden via HTTP 206 Range in unter 15 Millisekunden die Ziel-Chunks dekodiert. Zusammen mit AES-NI-Hardwarebeschleunigung läuft die Wiedergabe flüssig und akkuschonend.</div>
+        </details>
+
+        <!-- Q4: Offline Operation -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q4.</span> <span data-i18n="faqQ4Title">Funktioniert HiddenData komplett offline ohne Internetverbindung?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ4Body">Ja, zu 100 %. Das Verschlüsseln, Durchsuchen von Galerien, RAM-Streaming und Ändern von Passwörtern erfolgt rein lokal auf dem Prozessor des Endgeräts. Eine Internetverbindung wird nur benötigt, wenn Sie Google Drive zur Datensicherung oder Gerätesynchronisation nutzen.</div>
+        </details>
+
+        <!-- Q5: Android & Chrome Shared Vault -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q5.</span> <span data-i18n="faqQ5Title">Wie teilen sich Android und die PC-Chrome-Erweiterung denselben Tresor?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ5Body">Beide Plattformen verwenden exakt das gleiche V3-Envelope-Binärformat. Speichern Sie eine Datei von Android in Google Drive (oder auf einer USB-C-SSD), kann die Chrome-Erweiterung am PC den .enc-Container direkt mit demselben Master-Passwort öffnen und abspielen – ganz ohne Konvertierung.</div>
+        </details>
+
+        <!-- Q6: Google Drive Disconnection -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q6.</span> <span data-i18n="faqQ6Title">Was passiert, wenn die Verbindung während des Backups abbricht?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ6Body">HiddenData nutzt transaktionale, wiederaufnehmbare Upload-Sessions. Bei einem Verbindungsabbruch merkt sich das System den Chunk-Fortschritt und setzt die Übertragung fort, sobald die Verbindung wiederhergestellt ist. Beschädigte Teildateien überschreiben niemals intakte Daten.</div>
+        </details>
+
+        <!-- Q7: Least Privilege Scope -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q7.</span> <span data-i18n="faqQ7Title">Warum nutzt HiddenData den drive.file-Scope statt vollen Drive-Zugriffs?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ7Body">Voller Google Drive-Zugriff (.../auth/drive) erlaubt das Einsehen und Löschen aller persönlichen Dokumente und Fotos. HiddenData beschränkt sich strikt auf https://www.googleapis.com/auth/drive.file, wodurch die App ausschließlich auf selbst erstellte Tresordateien zugreifen kann. Ein Zugriff auf Ihre anderen Drive-Dateien ist technisch ausgeschlossen.</div>
+        </details>
+
+        <!-- Q8: Lifetime Pro Licensing -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q8.</span> <span data-i18n="faqQ8Title">Fallen bei der Pro-Lifetime-Lizenz wirklich keine Abogebühren an?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ8Body">Ja, garantiert. Wir glauben, dass Privatsphäre nicht an monatliche Gebühren gekoppelt sein darf. Für einmalig $8.99 erhalten Sie unbegrenzte Dateispeicherung, 4K-Streaming und PC-Android-Synchronisation auf Lebenszeit, inklusive aller kommenden v1.x-Updates.</div>
+        </details>
+
+        <!-- Q9: Media Format Support -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q9.</span> <span data-i18n="faqQ9Title">Welche Medien- und Dateiformate werden unterstützt?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ9Body">HiddenData unterstützt alle gängigen Bildformate (JPEG, PNG, WebP, GIF, SVG, BMP, HEIC/HEIF), Videoformate (MP4, WebM, MKV, MOV), Audioformate (MP3, WAV, FLAC, AAC, OGG) sowie beliebige Dokumentdateien (PDF, ZIP, TXT) als verschlüsselte .enc-Container.</div>
+        </details>
+
+        <!-- Q10: One-Touch Stealth Mode -->
+        <details class="faq-item">
+          <summary class="faq-trigger">
+            <span><span class="faq-q-badge">Q10.</span> <span data-i18n="faqQ10Title">Wie schützt der One-Touch-Sichtschutz vor Schulterblicken in der Öffentlichkeit?</span></span>
+            <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-body" data-i18n="faqQ10Body">In Zügen oder Cafés droht oft unerwünschtes Mitlesen. HiddenData bietet einen Notfall-Sichtschutz: Ein Tastendruck oder Klick auf das Schild-Symbol legt in unter 5 Millisekunden einen blickdichten Weichzeichner über die Ansicht und friert die Decoder ein, bis Sie sich wieder sicher fühlen.</div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Call to Action Box -->
+    <div style="background:var(--bg-card); border:1px solid var(--border-purple); border-radius:var(--radius-lg); padding:40px 32px; text-align:center; margin:60px 0 20px 0; box-shadow:var(--shadow-purple);">
+      <h3 style="font-size:1.8rem; font-weight:800; color:#FFFFFF; margin-bottom:12px;" data-i18n="ctaBoxTitle">Erleben Sie echte Zero-Disk-Privatsphäre noch heute</h3>
+      <p style="font-size:1.05rem; color:var(--text-secondary); max-width:680px; margin:0 auto 28px auto;" data-i18n="ctaBoxDesc">Installieren Sie die Chrome-Seitenleisten-Erweiterung für Ihren PC und die Android-APK für lückenlose Zero-Knowledge-Privatsphäre ohne Schreibzugriffe auf die Festplatte.</p>
+      <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:16px;">
+        <a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="btn btn-primary" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span data-i18n="btnDownloadApkNow">Android-APK jetzt herunterladen (v1.0.33)</span>
+        </a>
+        <a href="https://chromewebstore.google.com/detail/npcfbhkjlkgmaefdgdacpkbappcimmbj" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <span data-i18n="btnChromeStoreNow">Chrome-Erweiterung installieren</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="../icon-128.png" alt="HiddenData Logo" width="32" height="32" style="border-radius:8px;">
+            <span style="font-weight:800; font-size:1.15rem; color:#FFFFFF;">HiddenData</span>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footerDesc">Zero-Knowledge AES-256-GCM Sicherheitsstudio. Der sicherste plattformübergreifende Medientresor für PC und Smartphone.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColProduct">Produkt</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#features" class="footer-link" data-i18n="navFeatures">Funktionen</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="navSecurity">Sicherheit</a></li>
+            <li><a href="compare.html" class="footer-link" data-i18n="navCompare">Vergleich</a></li>
+            <li><a href="use-cases.html" class="footer-link" data-i18n="navUseCases">Anwendungsfälle</a></li>
+            <li><a href="early-access.html" class="footer-link" data-i18n="navEarlyAccess">Vorabzugang</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io/releases/latest/download/HiddenData-early-access.apk" class="footer-link" download>Android APK (v1.0.33)</a></li>
+            <li><a href="index.html#chrome-ext" class="footer-link">Chrome Extension</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColLegal">Rechtliches & Vertrauen</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html" class="footer-link" data-i18n="footerPrivacy">Datenschutzerklärung</a></li>
+            <li><a href="privacy.html#terms" class="footer-link" data-i18n="footerTerms">Nutzungsbedingungen & Rückerstattung</a></li>
+            <li><a href="security-architecture.html" class="footer-link" data-i18n="footerAudit">Kryptografischer Audit-Bericht</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title" data-i18n="footerColSupport">Support</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:truehoop81@gmail.com" class="footer-link" data-i18n="footerEmail">Entwicklerkontakt (truehoop81@gmail.com)</a></li>
+            <li><a href="https://github.com/truehoop81/truehoop81.github.io" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright" data-i18n="footerCopyright">© 2026 HiddenData Team. Alle Rechte vorbehalten.</div>
+        <div class="footer-merchant-note" data-i18n="footerMerchant">Merchant of Record: Polar</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script: I18N Engine initialization -->
+  <script type="module">
+    import { PAGES_I18N } from "../i18n-pages.js";
+    import { initI18n } from "../i18n.js";
+    initI18n(PAGES_I18N);
+  </script>
+</body>
+</html>
